@@ -1,4 +1,4 @@
-library flutter_package_marketplace;
+library flutter_marketplace_service;
 
 import 'dart:async';
 import 'dart:convert';
