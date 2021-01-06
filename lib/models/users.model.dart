@@ -1,20 +1,20 @@
-class UserModel {
+import '../BaseResponse.dart';
+
+class UserModel implements BaseResponse {
   int id;
   String name;
   String email;
 
-  UserModel(int id, String name, String email) {
-    this.id = id;
-    this.name = name;
-    this.email = email;
+  UserModel(this.id, this.name, this.email);
+
+  @override
+  UserModel fromJson(Map<String, dynamic> json) {
+    return UserModel(
+        id = json['id'], name = json['name'], email = json['email']);
   }
 
-  UserModel.fromJson(Map json)
-      : id = json['id'],
-        name = json['name'],
-        email = json['email'];
-
-  Map toJson() {
+  @override
+  Map<String, dynamic> toJson() {
     return {'id': id, 'name': name, 'email': email};
   }
 }
