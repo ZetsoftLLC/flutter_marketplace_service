@@ -1,4 +1,4 @@
-library Service;
+library service;
 
 import 'dart:async';
 import 'package:flutter_marketplace_service/api.dart';
