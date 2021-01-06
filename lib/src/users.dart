@@ -1,4 +1,11 @@
-part of flutter_marketplace_service;
+library users;
+
+import 'dart:async';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
+import 'package:flutter_marketplace_service/config.dart';
+import 'package:flutter_marketplace_service/models/users.model.dart';
 
 class Users {
   static Future<List<UserModel>> getUsers() async {
