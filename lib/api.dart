@@ -20,6 +20,7 @@ class Api {
           .map((model) => (T as BaseResponse).fromJson(model) as T)
           .toList();
     } catch (e) {
+      // ignore: deprecated_member_use
       return List<T>();
     }
   }
@@ -40,6 +41,7 @@ class Api {
           .map((model) => (TResult as BaseResponse).fromJson(model) as TResult)
           .toList();
     } catch (e) {
+      // ignore: deprecated_member_use
       return List<TResult>();
     }
   }

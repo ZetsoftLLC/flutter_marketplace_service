@@ -2,7 +2,7 @@ library service;
 
 import 'dart:async';
 import 'package:flutter_marketplace_service/api.dart';
-import 'package:flutter_marketplace_service/models/users.model.dart';
+import 'package:flutter_marketplace_service/models/users_model.dart';
 
 class UsersService {
   Future<List<UserModel>> getUsers() async {
