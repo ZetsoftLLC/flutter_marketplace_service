@@ -9,7 +9,7 @@ class ShopBannerService {
 
   static Future<List<ShopBanners>> getBanners() async {
     Api api = new Api();
-    var res = await api.get<ShopBanners>("/shopBanners");
+    var res = await api.get<ShopBanners>("shopBanners");
     print(res);
 
     // ignore: deprecated_member_use
