@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_marketplace_service/models/shop_banner_model.dart';
-import 'package:flutter_marketplace_service/service/shop_banner/shop_banner_api_provider.dart';
 import 'package:flutter_marketplace_service/service/shop_banner/shop_banner_repository.dart';
 import 'package:meta/meta.dart';
 
