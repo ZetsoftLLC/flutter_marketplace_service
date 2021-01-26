@@ -8,7 +8,7 @@ class ShopBannerEmptyState extends ShopBannerState {}
 class ShopBannerLoadingState extends ShopBannerState {}
 
 class ShopBannerLoadedState extends ShopBannerState {
-  final List<dynamic> banners;
+  final List<ShopBannerModel> banners;
   ShopBannerLoadedState({@required this.banners}) : assert(banners != null);
 }
 
