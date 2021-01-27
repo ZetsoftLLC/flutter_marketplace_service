@@ -23,13 +23,13 @@ class UsersApiProvider {
     }
   }
 
-  Future<LoginResponse> postLogin(LoginRequest param) async {
+  Future<LoginResponseModel> postLogin(LoginRequestModel param) async {
     final response = await Api.post("auth/login", param.toJson());
 
     if (response.isSuccess) {
       try {
         //dynamic jsonRes = response.result["data"];
-        return LoginResponse.fromJson(response.result);
+        return LoginResponseModel.fromJson(response.result);
       } catch (_) {
         return null;
       }
