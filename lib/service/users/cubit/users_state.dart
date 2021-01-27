@@ -7,10 +7,17 @@ class UsersEmptyState extends UsersState {}
 
 class UsersLoadingState extends UsersState {}
 
-class UsersLoadedState extends UsersState {
+class UsersSignupLoadedState extends UsersState {
   final MessageResponse signUpResult;
-  UsersLoadedState({@required this.signUpResult})
+  UsersSignupLoadedState({@required this.signUpResult})
       : assert(signUpResult != null);
 }
+
+class UsersLoginLoadedState extends UsersState {
+  final LoginResponse res;
+  UsersLoginLoadedState({@required this.res}) : assert(res != null);
+}
+
+class UsersLogoutLoadedState extends UsersState {}
 
 class UsersErrorState extends UsersState {}
