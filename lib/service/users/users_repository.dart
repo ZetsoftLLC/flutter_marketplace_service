@@ -10,7 +10,8 @@ class UsersRepository {
   Future<MessageResponse> signup(SignupRequest param) =>
       _provider.postSignUp(param);
 
-  Future<LoginResponse> login(LoginRequest param) => _provider.postLogin(param);
+  Future<LoginResponseModel> login(LoginRequestModel param) =>
+      _provider.postLogin(param);
 
   Future<bool> logout() => _provider.getLogout();
 }
