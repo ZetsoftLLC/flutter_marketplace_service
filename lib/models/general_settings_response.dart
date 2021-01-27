@@ -7,9 +7,9 @@ class GeneralSettingsResponse {
     this.status,
   });
 
-  final List<GeneralSetting> data;
-  final bool success;
-  final int status;
+  List<GeneralSetting> data;
+  bool success;
+  int status;
 
   GeneralSettingsResponse copyWith({
     List<GeneralSetting> data,
@@ -57,17 +57,17 @@ class GeneralSetting {
     this.googlePlus,
   });
 
-  final String logo;
-  final String siteName;
-  final String address;
-  final String description;
-  final String phone;
-  final String email;
-  final String facebook;
-  final String twitter;
-  final String instagram;
-  final String youtube;
-  final String googlePlus;
+  String logo;
+  String siteName;
+  String address;
+  String description;
+  String phone;
+  String email;
+  String facebook;
+  String twitter;
+  String instagram;
+  String youtube;
+  String googlePlus;
 
   factory GeneralSetting.fromJson(String str) =>
       GeneralSetting.fromMap(json.decode(str));

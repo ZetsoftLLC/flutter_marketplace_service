@@ -8,7 +8,7 @@ class ProductEmptyState extends ProductState {}
 class ProductLoadingState extends ProductState {}
 
 class ProductLoadedState extends ProductState {
-  final ProductsResponse list;
+  final ProductsResponseModel list;
   ProductLoadedState({@required this.list}) : assert(list != null);
 }
 

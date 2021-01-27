@@ -1,36 +1,36 @@
 import 'dart:convert';
 
-class BusinessSettingsResponse {
-  BusinessSettingsResponse({
+class BusinessSettingsResponseModel {
+  BusinessSettingsResponseModel({
     this.data,
     this.success,
     this.status,
   });
 
-  final List<BusinessSetting> data;
+  final List<BusinessSettingModel> data;
   final bool success;
   final int status;
 
-  BusinessSettingsResponse copyWith({
-    List<BusinessSetting> data,
+  BusinessSettingsResponseModel copyWith({
+    List<BusinessSettingModel> data,
     bool success,
     int status,
   }) =>
-      BusinessSettingsResponse(
+      BusinessSettingsResponseModel(
         data: data ?? this.data,
         success: success ?? this.success,
         status: status ?? this.status,
       );
 
-  factory BusinessSettingsResponse.fromJson(String str) =>
-      BusinessSettingsResponse.fromMap(json.decode(str));
+  factory BusinessSettingsResponseModel.fromJson(String str) =>
+      BusinessSettingsResponseModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory BusinessSettingsResponse.fromMap(Map<String, dynamic> json) =>
-      BusinessSettingsResponse(
-        data: List<BusinessSetting>.from(
-            json["data"].map((x) => BusinessSetting.fromMap(x))),
+  factory BusinessSettingsResponseModel.fromMap(Map<String, dynamic> json) =>
+      BusinessSettingsResponseModel(
+        data: List<BusinessSettingModel>.from(
+            json["data"].map((x) => BusinessSettingModel.fromMap(x))),
         success: json["success"],
         status: json["status"],
       );
@@ -42,8 +42,8 @@ class BusinessSettingsResponse {
       };
 }
 
-class BusinessSetting {
-  BusinessSetting({
+class BusinessSettingModel {
+  BusinessSettingModel({
     this.type,
     this.value,
   });
@@ -51,21 +51,22 @@ class BusinessSetting {
   final String type;
   final dynamic value;
 
-  BusinessSetting copyWith({
+  BusinessSettingModel copyWith({
     String type,
     dynamic value,
   }) =>
-      BusinessSetting(
+      BusinessSettingModel(
         type: type ?? this.type,
         value: value ?? this.value,
       );
 
-  factory BusinessSetting.fromJson(String str) =>
-      BusinessSetting.fromMap(json.decode(str));
+  factory BusinessSettingModel.fromJson(String str) =>
+      BusinessSettingModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory BusinessSetting.fromMap(Map<String, dynamic> json) => BusinessSetting(
+  factory BusinessSettingModel.fromMap(Map<String, dynamic> json) =>
+      BusinessSettingModel(
         type: json["type"],
         value: json["value"],
       );
@@ -82,8 +83,8 @@ class ValueElement {
     this.label,
   });
 
-  final String type;
-  final String label;
+  String type;
+  String label;
 
   ValueElement copyWith({
     String type,

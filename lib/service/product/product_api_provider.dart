@@ -5,14 +5,14 @@ import 'package:flutter_marketplace_service/api.dart';
 import 'package:flutter_marketplace_service/models/products_%20response.dart';
 
 class ProductApiProvider {
-  Future<ProductsResponse> getAll(int page) async {
+  Future<ProductsResponseModel> getAll(int page) async {
     final response = await Api.get("products?page=$page");
 
     if (response.isSuccess) {
       try {
         dynamic jsonRes = response.result;
-        return jsonRes.map<ProductsResponse>((m) {
-          return ProductsResponse.fromJson(m);
+        return jsonRes.map<ProductsResponseModel>((m) {
+          return ProductsResponseModel.fromJson(m);
         }).toList();
       } catch (_) {
         return null;
@@ -22,14 +22,14 @@ class ProductApiProvider {
     }
   }
 
-  Future<ProductsResponse> getOfAdmin(int page) async {
+  Future<ProductsResponseModel> getOfAdmin(int page) async {
     final response = await Api.get("products/admin?page=$page");
 
     if (response.isSuccess) {
       try {
         dynamic jsonRes = response.result;
-        return jsonRes.map<ProductsResponse>((m) {
-          return ProductsResponse.fromJson(m);
+        return jsonRes.map<ProductsResponseModel>((m) {
+          return ProductsResponseModel.fromJson(m);
         }).toList();
       } catch (_) {
         return null;
@@ -39,14 +39,14 @@ class ProductApiProvider {
     }
   }
 
-  Future<ProductsResponse> getOfSeller(int page) async {
+  Future<ProductsResponseModel> getOfSeller(int page) async {
     final response = await Api.get("products/seller?page=$page");
 
     if (response.isSuccess) {
       try {
         dynamic jsonRes = response.result;
-        return jsonRes.map<ProductsResponse>((m) {
-          return ProductsResponse.fromJson(m);
+        return jsonRes.map<ProductsResponseModel>((m) {
+          return ProductsResponseModel.fromJson(m);
         }).toList();
       } catch (_) {
         return null;
@@ -56,14 +56,14 @@ class ProductApiProvider {
     }
   }
 
-  Future<ProductsResponse> getOfCategory(int categoryId, int page) async {
+  Future<ProductsResponseModel> getOfCategory(int categoryId, int page) async {
     final response = await Api.get("products/category$categoryId?page=$page");
 
     if (response.isSuccess) {
       try {
         dynamic jsonRes = response.result;
-        return jsonRes.map<ProductsResponse>((m) {
-          return ProductsResponse.fromJson(m);
+        return jsonRes.map<ProductsResponseModel>((m) {
+          return ProductsResponseModel.fromJson(m);
         }).toList();
       } catch (_) {
         return null;
@@ -73,15 +73,16 @@ class ProductApiProvider {
     }
   }
 
-  Future<ProductsResponse> getOfSubCategory(int subCategoryId, int page) async {
+  Future<ProductsResponseModel> getOfSubCategory(
+      int subCategoryId, int page) async {
     final response =
         await Api.get("products/sub-catego$subCategoryId?page=$page");
 
     if (response.isSuccess) {
       try {
         dynamic jsonRes = response.result;
-        return jsonRes.map<ProductsResponse>((m) {
-          return ProductsResponse.fromJson(m);
+        return jsonRes.map<ProductsResponseModel>((m) {
+          return ProductsResponseModel.fromJson(m);
         }).toList();
       } catch (_) {
         return null;
@@ -91,14 +92,14 @@ class ProductApiProvider {
     }
   }
 
-  Future<ProductsResponse> getOfBrand(int brandId, int page) async {
+  Future<ProductsResponseModel> getOfBrand(int brandId, int page) async {
     final response = await Api.get("products/brand$brandId?page=$page");
 
     if (response.isSuccess) {
       try {
         dynamic jsonRes = response.result;
-        return jsonRes.map<ProductsResponse>((m) {
-          return ProductsResponse.fromJson(m);
+        return jsonRes.map<ProductsResponseModel>((m) {
+          return ProductsResponseModel.fromJson(m);
         }).toList();
       } catch (_) {
         return null;
@@ -108,14 +109,14 @@ class ProductApiProvider {
     }
   }
 
-  Future<ProductsResponse> getOfTodaysDeal() async {
+  Future<ProductsResponseModel> getOfTodaysDeal() async {
     final response = await Api.get("products/todays-deal");
 
     if (response.isSuccess) {
       try {
         dynamic jsonRes = response.result;
-        return jsonRes.map<ProductsResponse>((m) {
-          return ProductsResponse.fromJson(m);
+        return jsonRes.map<ProductsResponseModel>((m) {
+          return ProductsResponseModel.fromJson(m);
         }).toList();
       } catch (_) {
         return null;
@@ -125,14 +126,14 @@ class ProductApiProvider {
     }
   }
 
-  Future<ProductsResponse> getOfFeatured() async {
+  Future<ProductsResponseModel> getOfFeatured() async {
     final response = await Api.get("products/featured");
 
     if (response.isSuccess) {
       try {
         dynamic jsonRes = response.result;
-        return jsonRes.map<ProductsResponse>((m) {
-          return ProductsResponse.fromJson(m);
+        return jsonRes.map<ProductsResponseModel>((m) {
+          return ProductsResponseModel.fromJson(m);
         }).toList();
       } catch (_) {
         return null;
@@ -142,14 +143,14 @@ class ProductApiProvider {
     }
   }
 
-  Future<ProductsResponse> getOfRelated(int page) async {
+  Future<ProductsResponseModel> getOfRelated(int page) async {
     final response = await Api.get("products/related/$page");
 
     if (response.isSuccess) {
       try {
         dynamic jsonRes = response.result;
-        return jsonRes.map<ProductsResponse>((m) {
-          return ProductsResponse.fromJson(m);
+        return jsonRes.map<ProductsResponseModel>((m) {
+          return ProductsResponseModel.fromJson(m);
         }).toList();
       } catch (_) {
         return null;
@@ -159,14 +160,14 @@ class ProductApiProvider {
     }
   }
 
-  Future<ProductsResponse> getOfBestSelling() async {
+  Future<ProductsResponseModel> getOfBestSelling() async {
     final response = await Api.get("products/best-seller");
 
     if (response.isSuccess) {
       try {
         dynamic jsonRes = response.result;
-        return jsonRes.map<ProductsResponse>((m) {
-          return ProductsResponse.fromJson(m);
+        return jsonRes.map<ProductsResponseModel>((m) {
+          return ProductsResponseModel.fromJson(m);
         }).toList();
       } catch (_) {
         return null;
@@ -176,14 +177,14 @@ class ProductApiProvider {
     }
   }
 
-  Future<ProductsResponse> getById(int id) async {
+  Future<ProductsResponseModel> getById(int id) async {
     final response = await Api.get("products/$id");
 
     if (response.isSuccess) {
       try {
         dynamic jsonRes = response.result;
-        return jsonRes.map<ProductsResponse>((m) {
-          return ProductsResponse.fromJson(m);
+        return jsonRes.map<ProductsResponseModel>((m) {
+          return ProductsResponseModel.fromJson(m);
         }).toList();
       } catch (_) {
         return null;

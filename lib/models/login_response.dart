@@ -1,41 +1,42 @@
 import 'dart:convert';
 
-class LoginResponse {
-  LoginResponse({
+class LoginResponseModel {
+  LoginResponseModel({
     this.accessToken,
     this.tokenType,
     this.expiresAt,
     this.user,
   });
 
-  final String accessToken;
-  final String tokenType;
-  final DateTime expiresAt;
-  final User user;
+  String accessToken;
+  String tokenType;
+  DateTime expiresAt;
+  UserModel user;
 
-  LoginResponse copyWith({
+  LoginResponseModel copyWith({
     String accessToken,
     String tokenType,
     DateTime expiresAt,
-    User user,
+    UserModel user,
   }) =>
-      LoginResponse(
+      LoginResponseModel(
         accessToken: accessToken ?? this.accessToken,
         tokenType: tokenType ?? this.tokenType,
         expiresAt: expiresAt ?? this.expiresAt,
         user: user ?? this.user,
       );
 
-  factory LoginResponse.fromJson(String str) =>
-      LoginResponse.fromMap(json.decode(str));
+  factory LoginResponseModel.fromJson(String str) =>
+      LoginResponseModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory LoginResponse.fromMap(Map<String, dynamic> json) => LoginResponse(
+  factory LoginResponseModel.fromMap(Map<String, dynamic> json) =>
+      LoginResponseModel(
         accessToken: json["access_token"],
         tokenType: json["token_type"],
         expiresAt: DateTime.parse(json["expires_at"]),
-        user: User.fromMap(json["user"]),
+        user: UserModel.fromMap(json["user"]),
       );
 
   Map<String, dynamic> toMap() => {
@@ -46,8 +47,8 @@ class LoginResponse {
       };
 }
 
-class User {
-  User({
+class UserModel {
+  UserModel({
     this.id,
     this.type,
     this.name,
@@ -61,19 +62,19 @@ class User {
     this.phone,
   });
 
-  final int id;
-  final String type;
-  final String name;
-  final String email;
-  final dynamic avatar;
-  final dynamic avatarOriginal;
-  final dynamic address;
-  final dynamic country;
-  final dynamic city;
-  final dynamic postalCode;
-  final dynamic phone;
+  int id;
+  String type;
+  String name;
+  String email;
+  dynamic avatar;
+  dynamic avatarOriginal;
+  dynamic address;
+  dynamic country;
+  dynamic city;
+  dynamic postalCode;
+  dynamic phone;
 
-  User copyWith({
+  UserModel copyWith({
     int id,
     String type,
     String name,
@@ -86,7 +87,7 @@ class User {
     dynamic postalCode,
     dynamic phone,
   }) =>
-      User(
+      UserModel(
         id: id ?? this.id,
         type: type ?? this.type,
         name: name ?? this.name,
@@ -100,11 +101,11 @@ class User {
         phone: phone ?? this.phone,
       );
 
-  factory User.fromJson(String str) => User.fromMap(json.decode(str));
+  factory UserModel.fromJson(String str) => UserModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory User.fromMap(Map<String, dynamic> json) => User(
+  factory UserModel.fromMap(Map<String, dynamic> json) => UserModel(
         id: json["id"],
         type: json["type"],
         name: json["name"],

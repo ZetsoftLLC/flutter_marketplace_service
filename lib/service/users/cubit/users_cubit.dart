@@ -25,11 +25,11 @@ class UsersCubit extends Cubit<UsersState> {
     }
   }
 
-  Future<void> login(LoginRequest param) async {
+  Future<void> login(LoginRequestModel param) async {
     try {
       emit(UsersEmptyState());
 
-      final LoginResponse mes = await repository.login(param);
+      final LoginResponseModel mes = await repository.login(param);
 
       emit(UsersLoginLoadedState(res: mes));
     } catch (_) {

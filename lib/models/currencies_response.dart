@@ -7,9 +7,9 @@ class CurrenciesResponse {
     this.status,
   });
 
-  final List<Currency> data;
-  final bool success;
-  final int status;
+  List<Currency> data;
+  bool success;
+  int status;
 
   CurrenciesResponse copyWith({
     List<Currency> data,
@@ -49,10 +49,10 @@ class Currency {
     this.exchangeRate,
   });
 
-  final String name;
-  final String code;
-  final String symbol;
-  final double exchangeRate;
+  String name;
+  String code;
+  String symbol;
+  double exchangeRate;
 
   Currency copyWith({
     String name,

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-class LoginRequest {
-  LoginRequest({
+class LoginRequestModel {
+  LoginRequestModel({
     this.email,
     this.password,
     this.rememberMe,
@@ -11,23 +11,24 @@ class LoginRequest {
   String password;
   bool rememberMe;
 
-  LoginRequest copyWith({
+  LoginRequestModel copyWith({
     String email,
     String password,
     bool rememberMe,
   }) =>
-      LoginRequest(
+      LoginRequestModel(
         email: email ?? this.email,
         password: password ?? this.password,
         rememberMe: rememberMe ?? this.rememberMe,
       );
 
-  factory LoginRequest.fromJson(String str) =>
-      LoginRequest.fromMap(json.decode(str));
+  factory LoginRequestModel.fromJson(String str) =>
+      LoginRequestModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory LoginRequest.fromMap(Map<String, dynamic> json) => LoginRequest(
+  factory LoginRequestModel.fromMap(Map<String, dynamic> json) =>
+      LoginRequestModel(
         email: json["email"],
         password: json["password"],
         rememberMe: json["remember_me"],

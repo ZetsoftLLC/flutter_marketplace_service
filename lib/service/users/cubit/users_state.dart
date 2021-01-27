@@ -14,7 +14,7 @@ class UsersSignupLoadedState extends UsersState {
 }
 
 class UsersLoginLoadedState extends UsersState {
-  final LoginResponse res;
+  final LoginResponseModel res;
   UsersLoginLoadedState({@required this.res}) : assert(res != null);
 }
 

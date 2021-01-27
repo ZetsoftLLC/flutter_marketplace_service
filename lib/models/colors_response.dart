@@ -7,9 +7,9 @@ class ColorsResponse {
     this.status,
   });
 
-  final List<Color> data;
-  final bool success;
-  final int status;
+  List<Color> data;
+  bool success;
+  int status;
 
   ColorsResponse copyWith({
     List<Color> data,
@@ -46,8 +46,8 @@ class Color {
     this.code,
   });
 
-  final String name;
-  final String code;
+  String name;
+  String code;
 
   Color copyWith({
     String name,

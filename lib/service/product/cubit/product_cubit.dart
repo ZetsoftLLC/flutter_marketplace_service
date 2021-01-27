@@ -13,7 +13,7 @@ class ProductCubit extends Cubit<ProductState> {
     try {
       emit(ProductEmptyState());
 
-      final ProductsResponse res = await repository.getAll(page);
+      final ProductsResponseModel res = await repository.getAll(page);
 
       emit(ProductLoadedState(list: res));
     } catch (_) {
@@ -25,7 +25,7 @@ class ProductCubit extends Cubit<ProductState> {
     try {
       emit(ProductEmptyState());
 
-      final ProductsResponse res = await repository.getOfAdmin(page);
+      final ProductsResponseModel res = await repository.getOfAdmin(page);
 
       emit(ProductLoadedState(list: res));
     } catch (_) {
@@ -37,7 +37,7 @@ class ProductCubit extends Cubit<ProductState> {
     try {
       emit(ProductEmptyState());
 
-      final ProductsResponse res = await repository.getOfSeller(page);
+      final ProductsResponseModel res = await repository.getOfSeller(page);
 
       emit(ProductLoadedState(list: res));
     } catch (_) {
@@ -49,7 +49,7 @@ class ProductCubit extends Cubit<ProductState> {
     try {
       emit(ProductEmptyState());
 
-      final ProductsResponse res =
+      final ProductsResponseModel res =
           await repository.getOfCategory(categoryId, page);
 
       emit(ProductLoadedState(list: res));
@@ -62,7 +62,7 @@ class ProductCubit extends Cubit<ProductState> {
     try {
       emit(ProductEmptyState());
 
-      final ProductsResponse res =
+      final ProductsResponseModel res =
           await repository.getOfCategory(subCategoryId, page);
 
       emit(ProductLoadedState(list: res));
@@ -75,7 +75,8 @@ class ProductCubit extends Cubit<ProductState> {
     try {
       emit(ProductEmptyState());
 
-      final ProductsResponse res = await repository.getOfBrand(brandId, page);
+      final ProductsResponseModel res =
+          await repository.getOfBrand(brandId, page);
 
       emit(ProductLoadedState(list: res));
     } catch (_) {
@@ -87,7 +88,7 @@ class ProductCubit extends Cubit<ProductState> {
     try {
       emit(ProductEmptyState());
 
-      final ProductsResponse res =
+      final ProductsResponseModel res =
           await repository.getOfCategory(categoryId, page);
 
       emit(ProductLoadedState(list: res));
@@ -100,7 +101,7 @@ class ProductCubit extends Cubit<ProductState> {
     try {
       emit(ProductEmptyState());
 
-      final ProductsResponse res = await repository.getOfFeatured();
+      final ProductsResponseModel res = await repository.getOfFeatured();
 
       emit(ProductLoadedState(list: res));
     } catch (_) {
@@ -112,7 +113,7 @@ class ProductCubit extends Cubit<ProductState> {
     try {
       emit(ProductEmptyState());
 
-      final ProductsResponse res = await repository.getOfRelated(page);
+      final ProductsResponseModel res = await repository.getOfRelated(page);
 
       emit(ProductLoadedState(list: res));
     } catch (_) {
@@ -124,7 +125,7 @@ class ProductCubit extends Cubit<ProductState> {
     try {
       emit(ProductEmptyState());
 
-      final ProductsResponse res = await repository.getOfBestSelling();
+      final ProductsResponseModel res = await repository.getOfBestSelling();
 
       emit(ProductLoadedState(list: res));
     } catch (_) {
@@ -136,7 +137,7 @@ class ProductCubit extends Cubit<ProductState> {
     try {
       emit(ProductEmptyState());
 
-      final ProductsResponse res = await repository.getById(id);
+      final ProductsResponseModel res = await repository.getById(id);
 
       emit(ProductLoadedState(list: res));
     } catch (_) {

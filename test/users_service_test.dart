@@ -22,7 +22,7 @@ void main() {
   test('users login', () async {
     UsersRepository repo = UsersRepository();
 
-    var param = new LoginRequest();
+    var param = new LoginRequestModel();
     param.email = "teee111222111@mail.ru";
     param.password = "123456";
     param.rememberMe = false;

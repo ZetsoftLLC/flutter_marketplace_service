@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-class ProductsResponse {
-  ProductsResponse({
+class ProductsResponseModel {
+  ProductsResponseModel({
     this.data,
     this.links,
     this.meta,
@@ -9,22 +9,23 @@ class ProductsResponse {
     this.status,
   });
 
-  final List<Product> data;
-  final ProductsResponseLinks links;
-  final Meta meta;
+  final List<ProductModel> data;
+  final ProductsResponseLinksModel links;
+  final MetaModel meta;
   final bool success;
   final int status;
 
-  factory ProductsResponse.fromJson(String str) =>
-      ProductsResponse.fromMap(json.decode(str));
+  factory ProductsResponseModel.fromJson(String str) =>
+      ProductsResponseModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory ProductsResponse.fromMap(Map<String, dynamic> json) =>
-      ProductsResponse(
-        data: List<Product>.from(json["data"].map((x) => Product.fromMap(x))),
-        links: ProductsResponseLinks.fromMap(json["links"]),
-        meta: Meta.fromMap(json["meta"]),
+  factory ProductsResponseModel.fromMap(Map<String, dynamic> json) =>
+      ProductsResponseModel(
+        data: List<ProductModel>.from(
+            json["data"].map((x) => ProductModel.fromMap(x))),
+        links: ProductsResponseLinksModel.fromMap(json["links"]),
+        meta: MetaModel.fromMap(json["meta"]),
         success: json["success"],
         status: json["status"],
       );
@@ -38,8 +39,8 @@ class ProductsResponse {
       };
 }
 
-class Product {
-  Product({
+class ProductModel {
+  ProductModel({
     this.id,
     this.name,
     this.photos,
@@ -71,11 +72,12 @@ class Product {
   final int sales;
   final ProductLinks links;
 
-  factory Product.fromJson(String str) => Product.fromMap(json.decode(str));
+  factory ProductModel.fromJson(String str) =>
+      ProductModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Product.fromMap(Map<String, dynamic> json) => Product(
+  factory ProductModel.fromMap(Map<String, dynamic> json) => ProductModel(
         id: json["id"],
         name: json["name"],
         photos: List<String>.from(json["photos"].map((x) => x)),
@@ -143,8 +145,8 @@ class ProductLinks {
       };
 }
 
-class ProductsResponseLinks {
-  ProductsResponseLinks({
+class ProductsResponseLinksModel {
+  ProductsResponseLinksModel({
     this.first,
     this.last,
     this.prev,
@@ -156,13 +158,13 @@ class ProductsResponseLinks {
   final dynamic prev;
   final dynamic next;
 
-  factory ProductsResponseLinks.fromJson(String str) =>
-      ProductsResponseLinks.fromMap(json.decode(str));
+  factory ProductsResponseLinksModel.fromJson(String str) =>
+      ProductsResponseLinksModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory ProductsResponseLinks.fromMap(Map<String, dynamic> json) =>
-      ProductsResponseLinks(
+  factory ProductsResponseLinksModel.fromMap(Map<String, dynamic> json) =>
+      ProductsResponseLinksModel(
         first: json["first"],
         last: json["last"],
         prev: json["prev"],
@@ -177,8 +179,8 @@ class ProductsResponseLinks {
       };
 }
 
-class Meta {
-  Meta({
+class MetaModel {
+  MetaModel({
     this.currentPage,
     this.from,
     this.lastPage,
@@ -196,11 +198,11 @@ class Meta {
   final int to;
   final int total;
 
-  factory Meta.fromJson(String str) => Meta.fromMap(json.decode(str));
+  factory MetaModel.fromJson(String str) => MetaModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory Meta.fromMap(Map<String, dynamic> json) => Meta(
+  factory MetaModel.fromMap(Map<String, dynamic> json) => MetaModel(
         currentPage: json["current_page"],
         from: json["from"],
         lastPage: json["last_page"],
