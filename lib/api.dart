@@ -44,7 +44,7 @@ class Api {
   static Future<HttpResult> get(url) async {
     try {
       final dynamic headers = await _getReqHeader();
-      final String path = "${Config.baseUrl}$url";
+      final String path = "${Config.baseUrl}/$url";
       http.Response res = await http.get(path, headers: headers);
       return _result(res);
     } catch (_) {
@@ -54,7 +54,7 @@ class Api {
 
   static HttpResult _result(response) {
     dynamic result;
-    int status = response.statusCode != null ? response.statusCode : 404;
+    int status = response.statusCode ?? 404;
 
     if (response.statusCode >= 200 && response.statusCode <= 299) {
       result = response.body;
