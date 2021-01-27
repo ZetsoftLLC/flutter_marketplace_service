@@ -8,9 +8,9 @@ class BrandProvider {
   Future<List<BrandModel>> getBrands() async {
     final response = await Api.get("brands");
 
-    if (response.status == 200) {
+    if (response.isSuccess) {
       try {
-        dynamic jsonRes = response.result["data"];
+        dynamic jsonRes = response.result;
         return jsonRes.map<BrandModel>((m) {
           return BrandModel.fromJson(m);
         }).toList();

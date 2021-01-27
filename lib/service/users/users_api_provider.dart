@@ -9,12 +9,12 @@ import 'package:flutter_marketplace_service/models/signup_request.dart';
 
 class UsersApiProvider {
   Future<MessageResponse> postSignUp(SignupRequest param) async {
-    final response = await Api.post("auth/signup", param);
+    final response = await Api.post("auth/signup", param.toJson());
 
-    if (response.status == 200) {
+    if (response.isSuccess) {
       try {
-        dynamic jsonRes = response.result["data"];
-        return MessageResponse.fromJson(jsonRes);
+        //dynamic jsonRes = response.result[0];
+        return MessageResponse.fromJson(response.result);
       } catch (_) {
         return null;
       }
@@ -24,12 +24,12 @@ class UsersApiProvider {
   }
 
   Future<LoginResponse> postLogin(LoginRequest param) async {
-    final response = await Api.post("auth/login", param);
+    final response = await Api.post("auth/login", param.toJson());
 
-    if (response.status == 200) {
+    if (response.isSuccess) {
       try {
-        dynamic jsonRes = response.result["data"];
-        return LoginResponse.fromJson(jsonRes);
+        //dynamic jsonRes = response.result["data"];
+        return LoginResponse.fromJson(response.result);
       } catch (_) {
         return null;
       }
@@ -41,7 +41,7 @@ class UsersApiProvider {
   Future<bool> getLogout() async {
     final response = await Api.get("auth/logout");
 
-    if (response.status == 200) {
+    if (response.isSuccess) {
       // try {
       //   dynamic jsonRes = response.result["data"];
       //   return LoginResponse.fromJson(jsonRes);

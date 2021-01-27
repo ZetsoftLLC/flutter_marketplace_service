@@ -7,9 +7,9 @@ class LoginRequest {
     this.rememberMe,
   });
 
-  final String email;
-  final String password;
-  final bool rememberMe;
+  String email;
+  String password;
+  bool rememberMe;
 
   LoginRequest copyWith({
     String email,

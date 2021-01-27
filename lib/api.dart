@@ -1,15 +1,14 @@
 library api;
 
-import 'dart:convert';
 import 'package:flutter_marketplace_service/config.dart';
 import 'package:http/http.dart' as http;
 // import 'package:shared_preferences/shared_preferences.dart';
 
 class Api {
-  static post(url, data) async {
+  static Future<HttpResult> post(url, data) async {
     try {
       final dynamic headers = await _getReqHeader();
-      final String path = "${Config.baseUrl}/$url/";
+      final String path = "${Config.baseUrl}/$url";
       http.Response res = await http.post(path, body: data, headers: headers);
       return _result(res);
     } catch (_) {
@@ -17,10 +16,10 @@ class Api {
     }
   }
 
-  static put(url, data) async {
+  static Future<HttpResult> put(url, data) async {
     try {
       final dynamic headers = await _getReqHeader();
-      final String path = "${Config.baseUrl}/$url/";
+      final String path = "${Config.baseUrl}/$url";
       http.Response res = await http.put(path, body: data, headers: headers);
       return _result(res);
     } catch (_) {
@@ -28,7 +27,7 @@ class Api {
     }
   }
 
-  static delete(url, id) async {
+  static Future<HttpResult> delete(url, id) async {
     try {
       final dynamic headers = await _getReqHeader();
       final String path = "${Config.baseUrl}/$url/$id";
@@ -39,7 +38,7 @@ class Api {
     }
   }
 
-  static get(url) async {
+  static Future<HttpResult> get(url) async {
     try {
       final dynamic headers = await _getReqHeader();
       final String path = "${Config.baseUrl}$url";
@@ -50,11 +49,16 @@ class Api {
     }
   }
 
-  static _result(response) {
-    int status = response.statusCode != null ? response.statusCode : 404;
+  static HttpResult _result(response) {
     dynamic result;
-    if (response.statusCode == 200) result = json.decode(response.body);
-    return _Result(result, status);
+    int status = response.statusCode != null ? response.statusCode : 404;
+
+    if (response.statusCode >= 200 && response.statusCode <= 299) {
+      result = response.body;
+      return HttpResult(true, result, status);
+    } else {
+      return HttpResult(false, "", status);
+    }
   }
 
   static _getReqHeader() async {
@@ -75,9 +79,10 @@ class Api {
   }
 }
 
-class _Result {
+class HttpResult {
+  final bool isSuccess;
   final int status;
-  final dynamic result;
+  final String result;
 
-  _Result(this.result, this.status);
+  HttpResult(this.isSuccess, this.result, this.status);
 }

@@ -13,19 +13,6 @@ class SignupRequest {
   String password;
   String passowrdConfirmation;
 
-  SignupRequest copyWith({
-    String name,
-    String email,
-    String password,
-    String passowrdConfirmation,
-  }) =>
-      SignupRequest(
-        name: name ?? this.name,
-        email: email ?? this.email,
-        password: password ?? this.password,
-        passowrdConfirmation: passowrdConfirmation ?? this.passowrdConfirmation,
-      );
-
   factory SignupRequest.fromJson(String str) =>
       SignupRequest.fromMap(json.decode(str));
 

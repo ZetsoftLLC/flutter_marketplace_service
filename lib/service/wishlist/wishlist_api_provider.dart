@@ -8,9 +8,9 @@ class WishlistApiProvider {
   Future<List<WishlistModel>> getList() async {
     final response = await Api.get("wishlists");
 
-    if (response.status == 200) {
+    if (response.isSuccess) {
       try {
-        dynamic jsonRes = response.result["data"];
+        dynamic jsonRes = response.result;
         return jsonRes.map<WishlistModel>((m) {
           return WishlistModel.fromJson(m);
         }).toList();

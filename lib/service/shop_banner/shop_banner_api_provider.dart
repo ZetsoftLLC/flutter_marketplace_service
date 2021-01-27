@@ -9,9 +9,9 @@ class ShopBannerProvider {
     final response = await Api.get("");
     // final response = await Api.get("shopBanners");
 
-    if (response.status == 200) {
+    if (response.isSuccess) {
       try {
-        dynamic jsonRes = response.result["data"];
+        dynamic jsonRes = response.result;
         // dynamic jsonRes = response.result["data"];
         return jsonRes.map<ShopBannerModel>((m) {
           return ShopBannerModel.fromJson(m);
