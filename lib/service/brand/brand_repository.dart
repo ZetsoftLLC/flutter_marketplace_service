@@ -4,6 +4,5 @@ import 'package:flutter_marketplace_service/service/brand/brand_api_provider.dar
 class BrandRepository {
   BrandProvider _provider = BrandProvider();
 
-  int currentBanner = 0;
   Future<List<BrandModel>> getAllBrands() => _provider.getBrands();
 }
