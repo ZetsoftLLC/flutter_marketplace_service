@@ -69,7 +69,7 @@ class Api {
     final String tokenString = prefs.getString('token');
     String token;
     if (tokenString != null) {
-      LoginResponse userData = LoginResponse.fromJson(json.decode(tokenString));
+      var userData = LoginResponseModel.fromJson(json.decode(tokenString));
       token = "bearer " + userData.accessToken;
     }
 
