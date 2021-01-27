@@ -6,8 +6,7 @@ void main() {
   test('Get brands', () async {
     BrandRepository repo = BrandRepository();
     List<BrandModel> banners = await repo.getAllBrands();
-    // ignore: unnecessary_statements
-    banners;
-    // expect(List<BrandModel>, banners);
+
+    assert(banners != null);
   });
 }

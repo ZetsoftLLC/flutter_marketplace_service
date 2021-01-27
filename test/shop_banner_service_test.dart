@@ -6,7 +6,7 @@ void main() {
   test('Get banners', () async {
     ShopBannerRepository repo = ShopBannerRepository();
     List<ShopBannerModel> banners = await repo.getAllShopBanners();
-    // ignore: unnecessary_statements
-    banners;
+
+    assert(banners != null);
   });
 }

@@ -1,8 +1,11 @@
 library api;
 
+import 'dart:convert';
+
 import 'package:flutter_marketplace_service/config.dart';
+import 'package:flutter_marketplace_service/models/login_response.dart';
 import 'package:http/http.dart' as http;
-// import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Api {
   static Future<HttpResult> post(url, data) async {
@@ -62,17 +65,18 @@ class Api {
   }
 
   static _getReqHeader() async {
-    // final prefs = await SharedPreferences.getInstance();
-    // var tokenString = prefs.getString('tokenData');
-    // var token;
-    // if (tokenString != null) {
-    //   token = "bearer " + TokenData.fromJson(json.decode(tokenString)).token;
-    // }
+    final prefs = await SharedPreferences.getInstance();
+    final String tokenString = prefs.getString('token');
+    String token;
+    if (tokenString != null) {
+      LoginResponse userData = LoginResponse.fromJson(json.decode(tokenString));
+      token = "bearer " + userData.accessToken;
+    }
 
     final Map<String, String> headers = {
       "Content-type": "application/json",
       "Accept": "application/json",
-      // "Authorization": token
+      "Authorization": token
     };
 
     return headers;
