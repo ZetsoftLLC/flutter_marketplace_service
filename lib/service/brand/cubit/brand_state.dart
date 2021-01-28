@@ -8,7 +8,7 @@ class BrandEmptyState extends BrandState {}
 class BrandLoadingState extends BrandState {}
 
 class BrandLoadedState extends BrandState {
-  final List<BrandModel> banners;
+  final BannersResponseModel banners;
   BrandLoadedState({@required this.banners}) : assert(banners != null);
 }
 

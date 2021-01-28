@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-class ShopsResponse {
-  ShopsResponse({
+class ShopsResponseModel {
+  ShopsResponseModel({
     this.data,
     this.success,
     this.status,
@@ -11,23 +11,24 @@ class ShopsResponse {
   final bool success;
   final int status;
 
-  ShopsResponse copyWith({
+  ShopsResponseModel copyWith({
     List<Shop> data,
     bool success,
     int status,
   }) =>
-      ShopsResponse(
+      ShopsResponseModel(
         data: data ?? this.data,
         success: success ?? this.success,
         status: status ?? this.status,
       );
 
-  factory ShopsResponse.fromJson(String str) =>
-      ShopsResponse.fromMap(json.decode(str));
+  factory ShopsResponseModel.fromJson(String str) =>
+      ShopsResponseModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory ShopsResponse.fromMap(Map<String, dynamic> json) => ShopsResponse(
+  factory ShopsResponseModel.fromMap(Map<String, dynamic> json) =>
+      ShopsResponseModel(
         data: List<Shop>.from(json["data"].map((x) => Shop.fromMap(x))),
         success: json["success"],
         status: json["status"],

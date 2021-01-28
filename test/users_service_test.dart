@@ -8,8 +8,8 @@ void main() {
     UsersRepository repo = UsersRepository();
 
     var param = new SignupRequest();
-    param.name = "Test111";
-    param.email = "teee111222111@mail.ru";
+    param.name = "Test1111";
+    param.email = "teee1112221111@mail.ru";
     param.password = "123456";
     param.passowrdConfirmation = "123456";
 

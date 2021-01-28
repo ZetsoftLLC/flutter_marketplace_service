@@ -3,7 +3,7 @@ part of 'category_cubit.dart';
 @immutable
 abstract class CategoryState {}
 
-class CategoryEmptyState extends CategoryState {}
+class CategoryInitial extends CategoryState {}
 
 class CategoryLoadingState extends CategoryState {}
 

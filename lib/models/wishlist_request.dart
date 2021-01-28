@@ -6,12 +6,12 @@ class WishlistModel {
     this.productId,
   });
 
-  final String userId;
-  final String productId;
+  int userId;
+  int productId;
 
   WishlistModel copyWith({
-    String userId,
-    String productId,
+    int userId,
+    int productId,
   }) =>
       WishlistModel(
         userId: userId ?? this.userId,

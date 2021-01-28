@@ -30,10 +30,10 @@ class Api {
     }
   }
 
-  static Future<HttpResult> delete(url, id) async {
+  static Future<HttpResult> delete(url) async {
     try {
       final dynamic headers = await _getReqHeader();
-      final String path = "${Config.baseUrl}/$url/$id";
+      final String path = "${Config.baseUrl}/$url";
       http.Response res = await http.delete(path, headers: headers);
       return _result(res);
     } catch (_) {

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-class GeneralSettingsResponse {
-  GeneralSettingsResponse({
+class GeneralSettingsResponseModel {
+  GeneralSettingsResponseModel({
     this.data,
     this.success,
     this.status,
@@ -11,24 +11,24 @@ class GeneralSettingsResponse {
   bool success;
   int status;
 
-  GeneralSettingsResponse copyWith({
+  GeneralSettingsResponseModel copyWith({
     List<GeneralSetting> data,
     bool success,
     int status,
   }) =>
-      GeneralSettingsResponse(
+      GeneralSettingsResponseModel(
         data: data ?? this.data,
         success: success ?? this.success,
         status: status ?? this.status,
       );
 
-  factory GeneralSettingsResponse.fromJson(String str) =>
-      GeneralSettingsResponse.fromMap(json.decode(str));
+  factory GeneralSettingsResponseModel.fromJson(String str) =>
+      GeneralSettingsResponseModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory GeneralSettingsResponse.fromMap(Map<String, dynamic> json) =>
-      GeneralSettingsResponse(
+  factory GeneralSettingsResponseModel.fromMap(Map<String, dynamic> json) =>
+      GeneralSettingsResponseModel(
         data: List<GeneralSetting>.from(
             json["data"].map((x) => GeneralSetting.fromMap(x))),
         success: json["success"],
