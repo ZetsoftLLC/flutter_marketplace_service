@@ -52,6 +52,17 @@ class Api {
     }
   }
 
+  static Future<HttpResult> getv2(url) async {
+    try {
+      final dynamic headers = await _getReqHeader();
+      final String path = "${Config.baseUrlV2}/$url";
+      http.Response res = await http.get(path, headers: headers);
+      return _result(res);
+    } catch (_) {
+      return _result({});
+    }
+  }
+
   static HttpResult _result(response) {
     dynamic result;
     int status = response.statusCode ?? 404;

@@ -6,7 +6,7 @@ import 'package:flutter_marketplace_service/models/banners_response_model.dart';
 
 class BannerApiProvider {
   Future<BannersResponseModel> getBanners() async {
-    final response = await Api.get("banners");
+    final response = await Api.getv2("banners");
 
     if (response.isSuccess) {
       try {
