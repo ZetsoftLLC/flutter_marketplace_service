@@ -20,7 +20,7 @@ class UsersCubit extends Cubit<UsersState> {
       final MessageResponse mes = await repository.signup(param);
 
       emit(UsersSignupLoadedState(signUpResult: mes));
-    } catch (_) {
+    } catch (e) {
       emit(UsersErrorState());
     }
   }

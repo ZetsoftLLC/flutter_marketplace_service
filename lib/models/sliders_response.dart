@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-class SlidersResponse {
-  SlidersResponse({
+class SlidersResponseModel {
+  SlidersResponseModel({
     this.data,
     this.success,
     this.status,
@@ -11,23 +11,24 @@ class SlidersResponse {
   final bool success;
   final int status;
 
-  SlidersResponse copyWith({
+  SlidersResponseModel copyWith({
     List<Slider> data,
     bool success,
     int status,
   }) =>
-      SlidersResponse(
+      SlidersResponseModel(
         data: data ?? this.data,
         success: success ?? this.success,
         status: status ?? this.status,
       );
 
-  factory SlidersResponse.fromJson(String str) =>
-      SlidersResponse.fromMap(json.decode(str));
+  factory SlidersResponseModel.fromJson(String str) =>
+      SlidersResponseModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory SlidersResponse.fromMap(Map<String, dynamic> json) => SlidersResponse(
+  factory SlidersResponseModel.fromMap(Map<String, dynamic> json) =>
+      SlidersResponseModel(
         data: List<Slider>.from(json["data"].map((x) => Slider.fromMap(x))),
         success: json["success"],
         status: json["status"],
