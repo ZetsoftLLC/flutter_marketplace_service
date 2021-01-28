@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter_marketplace_service/models/brand_model.dart';
+import 'package:flutter_marketplace_service/models/banners_response.dart';
 import 'package:flutter_marketplace_service/service/brand/brand_repository.dart';
 import 'package:meta/meta.dart';
 
@@ -14,7 +14,7 @@ class BrandCubit extends Cubit<BrandState> {
     try {
       emit(BrandEmptyState());
 
-      final List<BrandModel> _bs = await bannerRepository.getAllBrands();
+      final BannersResponseModel _bs = await bannerRepository.getAllBrands();
 
       emit(BrandLoadedState(banners: _bs));
     } catch (_) {

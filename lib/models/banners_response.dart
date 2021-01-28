@@ -44,12 +44,12 @@ class BannersResponseModel {
 
 class BannerModel {
   BannerModel({
-    this.photo,
+    this.logo,
     this.url,
     this.position,
   });
 
-  String photo;
+  String logo;
   String url;
   int position;
 
@@ -59,13 +59,13 @@ class BannerModel {
   String toJson() => json.encode(toMap());
 
   factory BannerModel.fromMap(Map<String, dynamic> json) => BannerModel(
-        photo: json["photo"],
+        logo: json["logo"],
         url: json["url"],
         position: json["position"],
       );
 
   Map<String, dynamic> toMap() => {
-        "photo": photo,
+        "photo": logo,
         "url": url,
         "position": position,
       };
