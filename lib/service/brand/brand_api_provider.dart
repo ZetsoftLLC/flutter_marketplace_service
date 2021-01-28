@@ -11,10 +11,11 @@ class BrandProvider {
     if (response.isSuccess) {
       try {
         dynamic jsonRes = response.result;
-        return jsonRes.map<BrandModel>((m) {
+        var data = jsonRes["data"];
+        return data.map<BrandModel>((m) {
           return BrandModel.fromJson(m);
         }).toList();
-      } catch (_) {
+      } catch (e) {
         return null;
       }
     } else {
