@@ -2,11 +2,12 @@ library service;
 
 import 'dart:async';
 import 'package:flutter_marketplace_service/api.dart';
+import 'package:flutter_marketplace_service/config.dart';
 import 'package:flutter_marketplace_service/models/category_response.dart';
 
 class CategoryProvider {
   Future<CategoryResponseModel> getAll() async {
-    final response = await Api.get("categories");
+    final response = await Api.get("${Config.baseUrl}/categories");
 
     if (response.isSuccess) {
       try {
@@ -23,7 +24,7 @@ class CategoryProvider {
   }
 
   Future<CategoryResponseModel> getTop() async {
-    final response = await Api.get("categories/top");
+    final response = await Api.get("${Config.baseUrl}/categories/top");
 
     if (response.isSuccess) {
       try {
@@ -40,7 +41,7 @@ class CategoryProvider {
   }
 
   Future<CategoryResponseModel> getHomeCategories() async {
-    final response = await Api.get("home-categories");
+    final response = await Api.get("${Config.baseUrl}/home-categories");
 
     if (response.isSuccess) {
       try {
@@ -57,7 +58,7 @@ class CategoryProvider {
   }
 
   Future<CategoryResponseModel> getSubCategories(int id) async {
-    final response = await Api.get("sub-categories/$id");
+    final response = await Api.get("${Config.baseUrl}/sub-categories/$id");
 
     if (response.isSuccess) {
       try {

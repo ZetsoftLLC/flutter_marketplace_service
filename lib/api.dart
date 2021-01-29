@@ -2,7 +2,6 @@ library api;
 
 import 'dart:convert';
 
-import 'package:flutter_marketplace_service/config.dart';
 import 'package:flutter_marketplace_service/models/login_response.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -11,8 +10,7 @@ class Api {
   static Future<HttpResult> post(url, data) async {
     try {
       final dynamic headers = await _getReqHeader();
-      final String path = "${Config.baseUrl}/$url";
-      http.Response res = await http.post(path, body: data, headers: headers);
+      http.Response res = await http.post(url, body: data, headers: headers);
       return _result(res);
     } catch (_) {
       return _result({});
@@ -22,8 +20,7 @@ class Api {
   static Future<HttpResult> put(url, data) async {
     try {
       final dynamic headers = await _getReqHeader();
-      final String path = "${Config.baseUrl}/$url";
-      http.Response res = await http.put(path, body: data, headers: headers);
+      http.Response res = await http.put(url, body: data, headers: headers);
       return _result(res);
     } catch (_) {
       return _result({});
@@ -33,8 +30,7 @@ class Api {
   static Future<HttpResult> delete(url) async {
     try {
       final dynamic headers = await _getReqHeader();
-      final String path = "${Config.baseUrl}/$url";
-      http.Response res = await http.delete(path, headers: headers);
+      http.Response res = await http.delete(url, headers: headers);
       return _result(res);
     } catch (_) {
       return _result({});
@@ -44,19 +40,7 @@ class Api {
   static Future<HttpResult> get(url) async {
     try {
       final dynamic headers = await _getReqHeader();
-      final String path = "${Config.baseUrl}/$url";
-      http.Response res = await http.get(path, headers: headers);
-      return _result(res);
-    } catch (_) {
-      return _result({});
-    }
-  }
-
-  static Future<HttpResult> getv2(url) async {
-    try {
-      final dynamic headers = await _getReqHeader();
-      final String path = "${Config.baseUrlV2}/$url";
-      http.Response res = await http.get(path, headers: headers);
+      http.Response res = await http.get(url, headers: headers);
       return _result(res);
     } catch (_) {
       return _result({});

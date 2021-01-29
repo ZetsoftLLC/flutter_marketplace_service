@@ -2,11 +2,12 @@ library service;
 
 import 'dart:async';
 import 'package:flutter_marketplace_service/api.dart';
+import 'package:flutter_marketplace_service/config.dart';
 import 'package:flutter_marketplace_service/models/shops_response.dart';
 
 class ShopsApiProvider {
   Future<ShopsResponseModel> getList() async {
-    final response = await Api.get("shops");
+    final response = await Api.get("${Config.baseUrl}/shops");
 
     if (response.isSuccess) {
       try {

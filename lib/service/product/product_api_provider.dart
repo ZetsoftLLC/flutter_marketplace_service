@@ -2,11 +2,12 @@ library service;
 
 import 'dart:async';
 import 'package:flutter_marketplace_service/api.dart';
+import 'package:flutter_marketplace_service/config.dart';
 import 'package:flutter_marketplace_service/models/products_%20response.dart';
 
 class ProductApiProvider {
   Future<ProductsResponseModel> getAll(int page) async {
-    final response = await Api.get("products?page=$page");
+    final response = await Api.get("${Config.baseUrl}/products?page=$page");
 
     if (response.isSuccess) {
       try {
@@ -23,7 +24,8 @@ class ProductApiProvider {
   }
 
   Future<ProductsResponseModel> getOfAdmin(int page) async {
-    final response = await Api.get("products/admin?page=$page");
+    final response =
+        await Api.get("${Config.baseUrl}/products/admin?page=$page");
 
     if (response.isSuccess) {
       try {
@@ -40,7 +42,8 @@ class ProductApiProvider {
   }
 
   Future<ProductsResponseModel> getOfSeller(int page) async {
-    final response = await Api.get("products/seller?page=$page");
+    final response =
+        await Api.get("${Config.baseUrl}/products/seller?page=$page");
 
     if (response.isSuccess) {
       try {
@@ -57,7 +60,8 @@ class ProductApiProvider {
   }
 
   Future<ProductsResponseModel> getOfCategory(int categoryId, int page) async {
-    final response = await Api.get("products/category$categoryId?page=$page");
+    final response = await Api.get(
+        "${Config.baseUrl}/products/category$categoryId?page=$page");
 
     if (response.isSuccess) {
       try {
@@ -75,8 +79,8 @@ class ProductApiProvider {
 
   Future<ProductsResponseModel> getOfSubCategory(
       int subCategoryId, int page) async {
-    final response =
-        await Api.get("products/sub-catego$subCategoryId?page=$page");
+    final response = await Api.get(
+        "${Config.baseUrl}/products/sub-catego$subCategoryId?page=$page");
 
     if (response.isSuccess) {
       try {
@@ -93,7 +97,8 @@ class ProductApiProvider {
   }
 
   Future<ProductsResponseModel> getOfBrand(int brandId, int page) async {
-    final response = await Api.get("products/brand$brandId?page=$page");
+    final response =
+        await Api.get("${Config.baseUrl}/products/brand$brandId?page=$page");
 
     if (response.isSuccess) {
       try {
@@ -110,7 +115,7 @@ class ProductApiProvider {
   }
 
   Future<ProductsResponseModel> getOfTodaysDeal() async {
-    final response = await Api.get("products/todays-deal");
+    final response = await Api.get("${Config.baseUrl}/products/todays-deal");
 
     if (response.isSuccess) {
       try {
@@ -127,7 +132,7 @@ class ProductApiProvider {
   }
 
   Future<ProductsResponseModel> getOfFeatured() async {
-    final response = await Api.get("products/featured");
+    final response = await Api.get("${Config.baseUrl}/products/featured");
 
     if (response.isSuccess) {
       try {
@@ -144,7 +149,7 @@ class ProductApiProvider {
   }
 
   Future<ProductsResponseModel> getOfRelated(int page) async {
-    final response = await Api.get("products/related/$page");
+    final response = await Api.get("${Config.baseUrl}/products/related/$page");
 
     if (response.isSuccess) {
       try {
@@ -161,7 +166,7 @@ class ProductApiProvider {
   }
 
   Future<ProductsResponseModel> getOfBestSelling() async {
-    final response = await Api.get("products/best-seller");
+    final response = await Api.get("${Config.baseUrl}/products/best-seller");
 
     if (response.isSuccess) {
       try {
@@ -178,7 +183,7 @@ class ProductApiProvider {
   }
 
   Future<ProductsResponseModel> getById(int id) async {
-    final response = await Api.get("products/$id");
+    final response = await Api.get("${Config.baseUrl}/products/$id");
 
     if (response.isSuccess) {
       try {

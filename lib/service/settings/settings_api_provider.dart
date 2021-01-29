@@ -2,11 +2,12 @@ library service;
 
 import 'dart:async';
 import 'package:flutter_marketplace_service/api.dart';
+import 'package:flutter_marketplace_service/config.dart';
 import 'package:flutter_marketplace_service/models/settings_response.dart';
 
 class SettingsApiProvider {
   Future<SettingsResponseModel> getList() async {
-    final response = await Api.get("settings");
+    final response = await Api.get("${Config.baseUrl}/settings");
 
     if (response.isSuccess) {
       try {

@@ -2,11 +2,12 @@ library service;
 
 import 'dart:async';
 import 'package:flutter_marketplace_service/api.dart';
+import 'package:flutter_marketplace_service/config.dart';
 import 'package:flutter_marketplace_service/models/sliders_response.dart';
 
 class SlidersApiProvider {
   Future<SlidersResponseModel> getList() async {
-    final response = await Api.get("sliders");
+    final response = await Api.get("${Config.baseUrl}/sliders");
 
     if (response.isSuccess) {
       try {
