@@ -63,7 +63,7 @@ class ProductCubit extends Cubit<ProductState> {
       emit(ProductEmptyState());
 
       final ProductsResponseModel res =
-          await repository.getOfCategory(subCategoryId, page);
+          await repository.getOfSubCategory(subCategoryId, page);
 
       emit(ProductLoadedState(list: res));
     } catch (_) {
@@ -84,12 +84,11 @@ class ProductCubit extends Cubit<ProductState> {
     }
   }
 
-  Future<void> getOfTodaysDeal(int categoryId, int page) async {
+  Future<void> getOfTodaysDeal() async {
     try {
       emit(ProductEmptyState());
 
-      final ProductsResponseModel res =
-          await repository.getOfCategory(categoryId, page);
+      final ProductsResponseModel res = await repository.getOfTodaysDeal();
 
       emit(ProductLoadedState(list: res));
     } catch (_) {
@@ -121,7 +120,7 @@ class ProductCubit extends Cubit<ProductState> {
     }
   }
 
-  Future<void> getOfBestSelling(int categoryId, int page) async {
+  Future<void> getOfBestSelling() async {
     try {
       emit(ProductEmptyState());
 

@@ -4,79 +4,77 @@ import 'package:flutter_marketplace_service/service/product/product_repository.d
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  group('ProductCubit getAll', () {
-    final ProductProvider repository = new ProductProvider();
+  group('ProductCubit', () {
+    final ProductProvider repo = new ProductProvider();
+
     blocTest<ProductCubit, ProductState>(
-      'get list',
-      build: () => ProductCubit(repository),
+      'getAll',
+      build: () => ProductCubit(repo),
       act: (cubit) async => cubit.getAll(1),
       expect: null,
     );
-  });
 
-  test('product getOfAdmin', () async {
-    ProductProvider repo = ProductProvider();
-    var res = await repo.getOfAdmin(1);
-    assert(res != null);
-  });
+    blocTest<ProductCubit, ProductState>(
+      'getOfAdmin',
+      build: () => ProductCubit(repo),
+      act: (cubit) async => cubit.getOfAdmin(1),
+      expect: null,
+    );
 
-  test('product getOfSeller', () async {
-    ProductProvider repo = ProductProvider();
-    var res = await repo.getOfSeller(1);
-    assert(res != null);
-  });
+    blocTest<ProductCubit, ProductState>(
+      'getOfCategory',
+      build: () => ProductCubit(repo),
+      act: (cubit) async => cubit.getOfCategory(1, 1),
+      expect: null,
+    );
 
-  test('product getOfCategory', () async {
-    ProductProvider repo = ProductProvider();
-    var res = await repo.getOfCategory(1, 1);
-    assert(res != null);
-  });
+    blocTest<ProductCubit, ProductState>(
+      'getOfSubCategory',
+      build: () => ProductCubit(repo),
+      act: (cubit) async => cubit.getOfSubCategory(1, 1),
+      expect: null,
+    );
 
-  test('product getOfSubCategory', () async {
-    ProductProvider repo = ProductProvider();
-    var res = await repo.getOfSubCategory(1, 1);
-    assert(res != null);
-  });
+    blocTest<ProductCubit, ProductState>(
+      'getOfBrand',
+      build: () => ProductCubit(repo),
+      act: (cubit) async => cubit.getOfBrand(66, 1),
+      expect: null,
+    );
 
-  test('product getAll', () async {
-    ProductProvider repo = ProductProvider();
-    var res = await repo.getAll(1);
-    assert(res != null);
-  });
+    blocTest<ProductCubit, ProductState>(
+      'getOfTodaysDeal',
+      build: () => ProductCubit(repo),
+      act: (cubit) async => cubit.getOfTodaysDeal(),
+      expect: null,
+    );
 
-  test('product getOfBrand', () async {
-    ProductProvider repo = ProductProvider();
-    var res = await repo.getOfBrand(66, 1);
-    assert(res != null);
-  });
+    blocTest<ProductCubit, ProductState>(
+      'getOfFeatured',
+      build: () => ProductCubit(repo),
+      act: (cubit) async => cubit.getOfFeatured(),
+      expect: null,
+    );
 
-  test('product getOfTodaysDeal', () async {
-    ProductProvider repo = ProductProvider();
-    var res = await repo.getOfTodaysDeal();
-    assert(res != null);
-  });
+    blocTest<ProductCubit, ProductState>(
+      'getOfAdmin',
+      build: () => ProductCubit(repo),
+      act: (cubit) async => cubit.getOfRelated(1),
+      expect: null,
+    );
 
-  test('product getOfFeatured', () async {
-    ProductProvider repo = ProductProvider();
-    var res = await repo.getOfFeatured();
-    assert(res != null);
-  });
+    blocTest<ProductCubit, ProductState>(
+      'getOfAdmin',
+      build: () => ProductCubit(repo),
+      act: (cubit) async => cubit.getOfBestSelling(),
+      expect: null,
+    );
 
-  test('product getOfRelated', () async {
-    ProductProvider repo = ProductProvider();
-    var res = await repo.getOfRelated(1);
-    assert(res != null);
-  });
-
-  test('product getOfBestSelling', () async {
-    ProductProvider repo = ProductProvider();
-    var res = await repo.getOfBestSelling();
-    assert(res != null);
-  });
-
-  test('product getById', () async {
-    ProductProvider repo = ProductProvider();
-    var res = await repo.getById(1);
-    assert(res != null);
+    blocTest<ProductCubit, ProductState>(
+      'getOfAdmin',
+      build: () => ProductCubit(repo),
+      act: (cubit) async => cubit.getById(1),
+      expect: null,
+    );
   });
 }
