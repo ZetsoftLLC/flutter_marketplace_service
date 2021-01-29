@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 part 'category_state.dart';
 
 class CategoryCubit extends Cubit<CategoryState> {
-  final CategoryApiProvider repository;
+  final CategoryProvider repository;
   CategoryCubit(this.repository) : super(CategoryInitial());
 
   Future<void> getAll() async {

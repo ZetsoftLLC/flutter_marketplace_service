@@ -3,7 +3,7 @@ part of 'banner_cubit.dart';
 @immutable
 abstract class BannerState {}
 
-class BannerEmptyState extends BannerState {}
+class BannerInitial extends BannerState {}
 
 class BannerLoadingState extends BannerState {}
 

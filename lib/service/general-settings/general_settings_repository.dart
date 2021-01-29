@@ -2,7 +2,7 @@ import 'package:flutter_marketplace_service/models/general_settings_response.dar
 import 'package:flutter_marketplace_service/service/general-settings/general_settings_api_provider.dart';
 
 class GeneralSettingsProvider {
-  GeneralSettingsApiProvider _provider = GeneralSettingsApiProvider();
+  GeneralSettingsProvider _provider = GeneralSettingsProvider();
 
   Future<GeneralSettingsResponseModel> getList() => _provider.getList();
 }

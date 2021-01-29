@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final BannersResponseModel = BannersResponseModelFromMap(jsonString);
-
 import 'dart:convert';
 
 class BannersResponseModel {

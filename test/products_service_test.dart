@@ -1,11 +1,17 @@
+import 'package:bloc_test/bloc_test.dart';
+import 'package:flutter_marketplace_service/service/product/cubit/product_cubit.dart';
 import 'package:flutter_marketplace_service/service/product/product_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  test('product getAll', () async {
-    ProductProvider repo = ProductProvider();
-    var res = await repo.getAll(1);
-    assert(res != null);
+  group('ProductCubit getAll', () {
+    final ProductProvider repository = new ProductProvider();
+    blocTest<ProductCubit, ProductState>(
+      'get list',
+      build: () => ProductCubit(repository),
+      act: (cubit) async => cubit.getAll(1),
+      expect: null,
+    );
   });
 
   test('product getOfAdmin', () async {

@@ -1,13 +1,13 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_marketplace_service/models/message_response.dart';
 import 'package:flutter_marketplace_service/models/wishlist_request.dart';
-import 'package:flutter_marketplace_service/service/wishlist/wishlist_api_provider.dart';
+import 'package:flutter_marketplace_service/service/wishlist/wishlist_repository.dart';
 import 'package:meta/meta.dart';
 
 part 'wishlist_state.dart';
 
 class WishlistCubit extends Cubit<WishlistState> {
-  final WishlistApiProvider repository;
+  final WishlistRepository repository;
   WishlistCubit(this.repository) : super(WishlistInitial());
 
   Future<void> getAll(int id) async {

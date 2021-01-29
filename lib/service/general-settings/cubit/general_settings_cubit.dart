@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 part 'general_settings_state.dart';
 
 class GeneralSettingsCubit extends Cubit<GeneralSettingsState> {
-  final GeneralSettingsApiProvider repository;
+  final GeneralSettingsProvider repository;
   GeneralSettingsCubit(this.repository) : super(GeneralSettingsInitial());
 
   Future<void> getAll() async {

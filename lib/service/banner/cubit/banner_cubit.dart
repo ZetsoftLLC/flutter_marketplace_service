@@ -8,11 +8,11 @@ part 'banner_state.dart';
 class BannerCubit extends Cubit<BannerState> {
   final BannersRepository bannersRepository;
 
-  BannerCubit(this.bannersRepository) : super(BannerEmptyState());
+  BannerCubit(this.bannersRepository) : super(BannerInitial());
 
   Future<void> fetchBanners() async {
     try {
-      emit(BannerEmptyState());
+      emit(BannerInitial());
 
       final BannersResponseModel _bs = await bannersRepository.getAllBanners();
 
@@ -23,6 +23,6 @@ class BannerCubit extends Cubit<BannerState> {
   }
 
   Future<void> clearBanners() async {
-    emit(BannerEmptyState());
+    emit(BannerInitial());
   }
 }

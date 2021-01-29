@@ -4,7 +4,7 @@ import 'dart:async';
 import 'package:flutter_marketplace_service/api.dart';
 import 'package:flutter_marketplace_service/models/general_settings_response.dart';
 
-class GeneralSettingsApiProvider {
+class GeneralSettingsProvider {
   Future<GeneralSettingsResponseModel> getList() async {
     final response = await Api.get("general-settings");
 

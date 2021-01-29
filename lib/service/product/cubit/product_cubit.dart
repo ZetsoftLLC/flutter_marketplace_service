@@ -1,12 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_marketplace_service/models/products_%20response.dart';
-import 'package:flutter_marketplace_service/service/product/product_api_provider.dart';
+import 'package:flutter_marketplace_service/service/product/product_repository.dart';
 import 'package:meta/meta.dart';
 
 part 'product_state.dart';
 
 class ProductCubit extends Cubit<ProductState> {
-  final ProductApiProvider repository;
+  final ProductProvider repository;
   ProductCubit(this.repository) : super(ProductEmptyState());
 
   Future<void> getAll(int page) async {
