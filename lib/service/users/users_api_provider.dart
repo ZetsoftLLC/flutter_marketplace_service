@@ -20,7 +20,7 @@ class UsersApiProvider {
         //dynamic jsonRes = response.result[0];
 
         return MessageResponse.fromJson(response.result);
-      } catch (_) {
+      } catch (e) {
         return null;
       }
     } else {
