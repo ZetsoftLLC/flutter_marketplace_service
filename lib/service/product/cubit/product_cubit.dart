@@ -6,12 +6,12 @@ import 'package:meta/meta.dart';
 part 'product_state.dart';
 
 class ProductCubit extends Cubit<ProductState> {
-  final ProductProvider repository;
-  ProductCubit(this.repository) : super(ProductEmptyState());
+  final ProductRepository repository;
+  ProductCubit(this.repository) : super(ProductInitial());
 
   Future<void> getAll(int page) async {
     try {
-      emit(ProductEmptyState());
+      emit(ProductInitial());
 
       final ProductsResponseModel res = await repository.getAll(page);
 
@@ -23,7 +23,7 @@ class ProductCubit extends Cubit<ProductState> {
 
   Future<void> getOfAdmin(int page) async {
     try {
-      emit(ProductEmptyState());
+      emit(ProductInitial());
 
       final ProductsResponseModel res = await repository.getOfAdmin(page);
 
@@ -35,7 +35,7 @@ class ProductCubit extends Cubit<ProductState> {
 
   Future<void> getOfSeller(int page) async {
     try {
-      emit(ProductEmptyState());
+      emit(ProductInitial());
 
       final ProductsResponseModel res = await repository.getOfSeller(page);
 
@@ -47,7 +47,7 @@ class ProductCubit extends Cubit<ProductState> {
 
   Future<void> getOfCategory(int categoryId, int page) async {
     try {
-      emit(ProductEmptyState());
+      emit(ProductInitial());
 
       final ProductsResponseModel res =
           await repository.getOfCategory(categoryId, page);
@@ -60,7 +60,7 @@ class ProductCubit extends Cubit<ProductState> {
 
   Future<void> getOfSubCategory(int subCategoryId, int page) async {
     try {
-      emit(ProductEmptyState());
+      emit(ProductInitial());
 
       final ProductsResponseModel res =
           await repository.getOfSubCategory(subCategoryId, page);
@@ -73,7 +73,7 @@ class ProductCubit extends Cubit<ProductState> {
 
   Future<void> getOfBrand(int brandId, int page) async {
     try {
-      emit(ProductEmptyState());
+      emit(ProductInitial());
 
       final ProductsResponseModel res =
           await repository.getOfBrand(brandId, page);
@@ -86,7 +86,7 @@ class ProductCubit extends Cubit<ProductState> {
 
   Future<void> getOfTodaysDeal() async {
     try {
-      emit(ProductEmptyState());
+      emit(ProductInitial());
 
       final ProductsResponseModel res = await repository.getOfTodaysDeal();
 
@@ -98,7 +98,7 @@ class ProductCubit extends Cubit<ProductState> {
 
   Future<void> getOfFeatured() async {
     try {
-      emit(ProductEmptyState());
+      emit(ProductInitial());
 
       final ProductsResponseModel res = await repository.getOfFeatured();
 
@@ -110,7 +110,7 @@ class ProductCubit extends Cubit<ProductState> {
 
   Future<void> getOfRelated(int page) async {
     try {
-      emit(ProductEmptyState());
+      emit(ProductInitial());
 
       final ProductsResponseModel res = await repository.getOfRelated(page);
 
@@ -122,7 +122,7 @@ class ProductCubit extends Cubit<ProductState> {
 
   Future<void> getOfBestSelling() async {
     try {
-      emit(ProductEmptyState());
+      emit(ProductInitial());
 
       final ProductsResponseModel res = await repository.getOfBestSelling();
 
@@ -134,7 +134,7 @@ class ProductCubit extends Cubit<ProductState> {
 
   Future<void> getById(int id) async {
     try {
-      emit(ProductEmptyState());
+      emit(ProductInitial());
 
       final ProductsResponseModel res = await repository.getById(id);
 

@@ -1,7 +1,7 @@
 import 'package:flutter_marketplace_service/models/products_%20response.dart';
 import 'package:flutter_marketplace_service/service/product/product_api_provider.dart';
 
-class ProductProvider {
+class ProductRepository {
   ProductApiProvider _pro = ProductApiProvider();
 
   Future<ProductsResponseModel> getAll(int page) => _pro.getAll(page);
