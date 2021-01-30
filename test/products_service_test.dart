@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('ProductCubit', () {
-    final ProductProvider repo = new ProductProvider();
+    final ProductRepository repo = new ProductRepository();
 
     blocTest<ProductCubit, ProductState>(
       'getAll',
