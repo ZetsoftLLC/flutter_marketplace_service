@@ -3,17 +3,24 @@ import 'dart:convert';
 class ProductsResponseModel {
   ProductsResponseModel({
     this.data,
-    this.links,
-    this.meta,
     this.success,
     this.status,
   });
 
   final List<ProductModel> data;
-  final ProductsResponseLinksModel links;
-  final MetaModel meta;
   final bool success;
   final int status;
+
+  ProductsResponseModel copyWith({
+    List<ProductModel> data,
+    bool success,
+    int status,
+  }) =>
+      ProductsResponseModel(
+        data: data ?? this.data,
+        success: success ?? this.success,
+        status: status ?? this.status,
+      );
 
   factory ProductsResponseModel.fromJson(String str) =>
       ProductsResponseModel.fromMap(json.decode(str));
@@ -24,16 +31,12 @@ class ProductsResponseModel {
       ProductsResponseModel(
         data: List<ProductModel>.from(
             json["data"].map((x) => ProductModel.fromMap(x))),
-        links: ProductsResponseLinksModel.fromMap(json["links"]),
-        meta: MetaModel.fromMap(json["meta"]),
         success: json["success"],
         status: json["status"],
       );
 
   Map<String, dynamic> toMap() => {
         "data": List<dynamic>.from(data.map((x) => x.toMap())),
-        "links": links.toMap(),
-        "meta": meta.toMap(),
         "success": success,
         "status": status,
       };
@@ -61,16 +64,49 @@ class ProductModel {
   final String name;
   final List<String> photos;
   final String thumbnailImage;
-  final int basePrice;
-  final int baseDiscountedPrice;
+  final double basePrice;
+  final double baseDiscountedPrice;
   final int todaysDeal;
   final int featured;
   final String unit;
   final int discount;
-  final String discountType;
+  final DiscountType discountType;
   final int rating;
   final int sales;
-  final ProductLinks links;
+  final Links links;
+
+  ProductModel copyWith({
+    int id,
+    String name,
+    List<String> photos,
+    String thumbnailImage,
+    double basePrice,
+    double baseDiscountedPrice,
+    int todaysDeal,
+    int featured,
+    String unit,
+    int discount,
+    DiscountType discountType,
+    int rating,
+    int sales,
+    Links links,
+  }) =>
+      ProductModel(
+        id: id ?? this.id,
+        name: name ?? this.name,
+        photos: photos ?? this.photos,
+        thumbnailImage: thumbnailImage ?? this.thumbnailImage,
+        basePrice: basePrice ?? this.basePrice,
+        baseDiscountedPrice: baseDiscountedPrice ?? this.baseDiscountedPrice,
+        todaysDeal: todaysDeal ?? this.todaysDeal,
+        featured: featured ?? this.featured,
+        unit: unit ?? this.unit,
+        discount: discount ?? this.discount,
+        discountType: discountType ?? this.discountType,
+        rating: rating ?? this.rating,
+        sales: sales ?? this.sales,
+        links: links ?? this.links,
+      );
 
   factory ProductModel.fromJson(String str) =>
       ProductModel.fromMap(json.decode(str));
@@ -82,16 +118,16 @@ class ProductModel {
         name: json["name"],
         photos: List<String>.from(json["photos"].map((x) => x)),
         thumbnailImage: json["thumbnail_image"],
-        basePrice: json["base_price"],
-        baseDiscountedPrice: json["base_discounted_price"],
+        basePrice: json["base_price"].toDouble(),
+        baseDiscountedPrice: json["base_discounted_price"].toDouble(),
         todaysDeal: json["todays_deal"],
         featured: json["featured"],
         unit: json["unit"],
         discount: json["discount"],
-        discountType: json["discount_type"],
+        discountType: discountTypeValues.map[json["discount_type"]],
         rating: json["rating"],
         sales: json["sales"],
-        links: ProductLinks.fromMap(json["links"]),
+        links: Links.fromMap(json["links"]),
       );
 
   Map<String, dynamic> toMap() => {
@@ -105,15 +141,20 @@ class ProductModel {
         "featured": featured,
         "unit": unit,
         "discount": discount,
-        "discount_type": discountType,
+        "discount_type": discountTypeValues.reverse[discountType],
         "rating": rating,
         "sales": sales,
         "links": links.toMap(),
       };
 }
 
-class ProductLinks {
-  ProductLinks({
+enum DiscountType { PERCENT, AMOUNT }
+
+final discountTypeValues = EnumValues(
+    {"amount": DiscountType.AMOUNT, "percent": DiscountType.PERCENT});
+
+class Links {
+  Links({
     this.details,
     this.reviews,
     this.related,
@@ -125,12 +166,24 @@ class ProductLinks {
   final String related;
   final String topFromSeller;
 
-  factory ProductLinks.fromJson(String str) =>
-      ProductLinks.fromMap(json.decode(str));
+  Links copyWith({
+    String details,
+    String reviews,
+    String related,
+    String topFromSeller,
+  }) =>
+      Links(
+        details: details ?? this.details,
+        reviews: reviews ?? this.reviews,
+        related: related ?? this.related,
+        topFromSeller: topFromSeller ?? this.topFromSeller,
+      );
+
+  factory Links.fromJson(String str) => Links.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory ProductLinks.fromMap(Map<String, dynamic> json) => ProductLinks(
+  factory Links.fromMap(Map<String, dynamic> json) => Links(
         details: json["details"],
         reviews: json["reviews"],
         related: json["related"],
@@ -145,80 +198,16 @@ class ProductLinks {
       };
 }
 
-class ProductsResponseLinksModel {
-  ProductsResponseLinksModel({
-    this.first,
-    this.last,
-    this.prev,
-    this.next,
-  });
+class EnumValues<T> {
+  Map<String, T> map;
+  Map<T, String> reverseMap;
 
-  final String first;
-  final String last;
-  final dynamic prev;
-  final dynamic next;
+  EnumValues(this.map);
 
-  factory ProductsResponseLinksModel.fromJson(String str) =>
-      ProductsResponseLinksModel.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory ProductsResponseLinksModel.fromMap(Map<String, dynamic> json) =>
-      ProductsResponseLinksModel(
-        first: json["first"],
-        last: json["last"],
-        prev: json["prev"],
-        next: json["next"],
-      );
-
-  Map<String, dynamic> toMap() => {
-        "first": first,
-        "last": last,
-        "prev": prev,
-        "next": next,
-      };
-}
-
-class MetaModel {
-  MetaModel({
-    this.currentPage,
-    this.from,
-    this.lastPage,
-    this.path,
-    this.perPage,
-    this.to,
-    this.total,
-  });
-
-  final int currentPage;
-  final int from;
-  final int lastPage;
-  final String path;
-  final int perPage;
-  final int to;
-  final int total;
-
-  factory MetaModel.fromJson(String str) => MetaModel.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory MetaModel.fromMap(Map<String, dynamic> json) => MetaModel(
-        currentPage: json["current_page"],
-        from: json["from"],
-        lastPage: json["last_page"],
-        path: json["path"],
-        perPage: json["per_page"],
-        to: json["to"],
-        total: json["total"],
-      );
-
-  Map<String, dynamic> toMap() => {
-        "current_page": currentPage,
-        "from": from,
-        "last_page": lastPage,
-        "path": path,
-        "per_page": perPage,
-        "to": to,
-        "total": total,
-      };
+  Map<T, String> get reverse {
+    if (reverseMap == null) {
+      reverseMap = map.map((k, v) => new MapEntry(v, k));
+    }
+    return reverseMap;
+  }
 }

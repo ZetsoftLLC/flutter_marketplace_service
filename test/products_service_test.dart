@@ -7,6 +7,12 @@ void main() {
   group('ProductCubit', () {
     final ProductRepository repo = new ProductRepository();
 
+    test('getOfBestSelling ProductRepository', () async {
+      var res = await repo.getOfBestSelling();
+      // ignore: unnecessary_statements
+      assert(res != null);
+    });
+
     blocTest<ProductCubit, ProductState>(
       'getAll',
       build: () => ProductCubit(repo),

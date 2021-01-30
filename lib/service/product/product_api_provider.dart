@@ -3,7 +3,7 @@ library service;
 import 'dart:async';
 import 'package:flutter_marketplace_service/api.dart';
 import 'package:flutter_marketplace_service/config.dart';
-import 'package:flutter_marketplace_service/models/products_%20response.dart';
+import 'package:flutter_marketplace_service/models/products_response.dart';
 
 class ProductApiProvider {
   Future<ProductsResponseModel> getAll(int page) async {
@@ -11,10 +11,7 @@ class ProductApiProvider {
 
     if (response.isSuccess) {
       try {
-        dynamic jsonRes = response.result;
-        return jsonRes.map<ProductsResponseModel>((m) {
-          return ProductsResponseModel.fromJson(m);
-        }).toList();
+        return ProductsResponseModel.fromJson(response.result);
       } catch (_) {
         return null;
       }
@@ -29,10 +26,7 @@ class ProductApiProvider {
 
     if (response.isSuccess) {
       try {
-        dynamic jsonRes = response.result;
-        return jsonRes.map<ProductsResponseModel>((m) {
-          return ProductsResponseModel.fromJson(m);
-        }).toList();
+        return ProductsResponseModel.fromJson(response.result);
       } catch (_) {
         return null;
       }
@@ -47,10 +41,7 @@ class ProductApiProvider {
 
     if (response.isSuccess) {
       try {
-        dynamic jsonRes = response.result;
-        return jsonRes.map<ProductsResponseModel>((m) {
-          return ProductsResponseModel.fromJson(m);
-        }).toList();
+        return ProductsResponseModel.fromJson(response.result);
       } catch (_) {
         return null;
       }
@@ -65,10 +56,7 @@ class ProductApiProvider {
 
     if (response.isSuccess) {
       try {
-        dynamic jsonRes = response.result;
-        return jsonRes.map<ProductsResponseModel>((m) {
-          return ProductsResponseModel.fromJson(m);
-        }).toList();
+        return ProductsResponseModel.fromJson(response.result);
       } catch (_) {
         return null;
       }
@@ -84,10 +72,7 @@ class ProductApiProvider {
 
     if (response.isSuccess) {
       try {
-        dynamic jsonRes = response.result;
-        return jsonRes.map<ProductsResponseModel>((m) {
-          return ProductsResponseModel.fromJson(m);
-        }).toList();
+        return ProductsResponseModel.fromJson(response.result);
       } catch (_) {
         return null;
       }
@@ -102,10 +87,7 @@ class ProductApiProvider {
 
     if (response.isSuccess) {
       try {
-        dynamic jsonRes = response.result;
-        return jsonRes.map<ProductsResponseModel>((m) {
-          return ProductsResponseModel.fromJson(m);
-        }).toList();
+        return ProductsResponseModel.fromJson(response.result);
       } catch (_) {
         return null;
       }
@@ -119,10 +101,7 @@ class ProductApiProvider {
 
     if (response.isSuccess) {
       try {
-        dynamic jsonRes = response.result;
-        return jsonRes.map<ProductsResponseModel>((m) {
-          return ProductsResponseModel.fromJson(m);
-        }).toList();
+        return ProductsResponseModel.fromJson(response.result);
       } catch (_) {
         return null;
       }
@@ -136,10 +115,7 @@ class ProductApiProvider {
 
     if (response.isSuccess) {
       try {
-        dynamic jsonRes = response.result;
-        return jsonRes.map<ProductsResponseModel>((m) {
-          return ProductsResponseModel.fromJson(m);
-        }).toList();
+        return ProductsResponseModel.fromJson(response.result);
       } catch (_) {
         return null;
       }
@@ -153,10 +129,7 @@ class ProductApiProvider {
 
     if (response.isSuccess) {
       try {
-        dynamic jsonRes = response.result;
-        return jsonRes.map<ProductsResponseModel>((m) {
-          return ProductsResponseModel.fromJson(m);
-        }).toList();
+        return ProductsResponseModel.fromJson(response.result);
       } catch (_) {
         return null;
       }
@@ -170,10 +143,7 @@ class ProductApiProvider {
 
     if (response.isSuccess) {
       try {
-        dynamic jsonRes = response.result;
-        return jsonRes.map<ProductsResponseModel>((m) {
-          return ProductsResponseModel.fromJson(m);
-        }).toList();
+        return ProductsResponseModel.fromJson(response.result);
       } catch (_) {
         return null;
       }
@@ -187,10 +157,7 @@ class ProductApiProvider {
 
     if (response.isSuccess) {
       try {
-        dynamic jsonRes = response.result;
-        return jsonRes.map<ProductsResponseModel>((m) {
-          return ProductsResponseModel.fromJson(m);
-        }).toList();
+        return ProductsResponseModel.fromJson(response.result);
       } catch (_) {
         return null;
       }

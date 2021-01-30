@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter_marketplace_service/models/products_%20response.dart';
+import 'package:flutter_marketplace_service/models/products_response.dart';
 import 'package:flutter_marketplace_service/service/product/product_repository.dart';
 import 'package:meta/meta.dart';
 
