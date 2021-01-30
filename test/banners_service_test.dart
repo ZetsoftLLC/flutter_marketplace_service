@@ -12,7 +12,7 @@ void main() {
       'fetchBanners',
       build: () => BannerCubit(repository),
       act: (cubit) async => cubit.fetchBanners(),
-      expect: [null],
+      expect: null,
     );
   });
 }
