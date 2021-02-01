@@ -7,8 +7,8 @@ void main() {
   group('ProductCubit', () {
     final ProductRepository repo = new ProductRepository();
 
-    test('getOfBestSelling ProductRepository', () async {
-      var res = await repo.getOfBestSelling();
+    test('getOfBestSeller ProductRepository', () async {
+      var res = await repo.getOfBestSeller();
       // ignore: unnecessary_statements
       assert(res != null);
     });
@@ -72,7 +72,7 @@ void main() {
     blocTest<ProductCubit, ProductState>(
       'getOfAdmin',
       build: () => ProductCubit(repo),
-      act: (cubit) async => cubit.getOfBestSelling(),
+      act: (cubit) async => cubit.getOfBestSeller(),
       expect: null,
     );
 

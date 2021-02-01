@@ -138,7 +138,7 @@ class ProductApiProvider {
     }
   }
 
-  Future<ProductsResponseModel> getOfBestSelling() async {
+  Future<ProductsResponseModel> getOfBestSeller() async {
     final response = await Api.get("${Config.baseUrl}/products/best-seller");
 
     if (response.isSuccess) {

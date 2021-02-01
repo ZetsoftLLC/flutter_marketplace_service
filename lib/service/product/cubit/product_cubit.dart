@@ -120,11 +120,11 @@ class ProductCubit extends Cubit<ProductState> {
     }
   }
 
-  Future<void> getOfBestSelling() async {
+  Future<void> getOfBestSeller() async {
     try {
       emit(ProductInitial());
 
-      final ProductsResponseModel res = await repository.getOfBestSelling();
+      final ProductsResponseModel res = await repository.getOfBestSeller();
 
       emit(ProductLoadedState(list: res));
     } catch (_) {

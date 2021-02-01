@@ -26,7 +26,7 @@ class ProductRepository {
   Future<ProductsResponseModel> getOfRelated(int page) =>
       _pro.getOfRelated(page);
 
-  Future<ProductsResponseModel> getOfBestSelling() => _pro.getOfBestSelling();
+  Future<ProductsResponseModel> getOfBestSeller() => _pro.getOfBestSeller();
 
   Future<ProductsResponseModel> getById(int id) => _pro.getById(id);
 }
