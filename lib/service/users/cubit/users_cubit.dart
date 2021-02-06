@@ -9,9 +9,9 @@ import 'package:meta/meta.dart';
 part 'users_state.dart';
 
 class UsersCubit extends Cubit<UsersState> {
-  final UsersRepository repository;
+  final UsersRepository repository = UsersRepository();
 
-  UsersCubit(this.repository) : super(UsersEmptyState());
+  UsersCubit() : super(UsersEmptyState());
 
   Future<void> signup(SignupRequest param) async {
     try {
@@ -21,7 +21,7 @@ class UsersCubit extends Cubit<UsersState> {
 
       emit(UsersSignupLoadedState(signUpResult: mes));
     } catch (e) {
-      emit(UsersErrorState());
+      emit(UsersErrorState(message: "$e"));
     }
   }
 

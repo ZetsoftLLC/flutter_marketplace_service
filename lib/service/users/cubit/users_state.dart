@@ -20,4 +20,7 @@ class UsersLoginLoadedState extends UsersState {
 
 class UsersLogoutLoadedState extends UsersState {}
 
-class UsersErrorState extends UsersState {}
+class UsersErrorState extends UsersState {
+  final String message;
+  UsersErrorState({this.message});
+}
