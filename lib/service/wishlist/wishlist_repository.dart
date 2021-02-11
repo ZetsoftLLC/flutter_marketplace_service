@@ -5,7 +5,7 @@ import 'package:flutter_marketplace_service/service/wishlist/wishlist_api_provid
 class WishlistRepository {
   WishlistApiProvider _provider = WishlistApiProvider();
 
-  Future<List<WishlistModel>> getList(int id) => _provider.getList(id);
+  Future<List<String>> getList(int id) => _provider.getList(id);
   Future<MessageResponse> save(WishlistModel param) => _provider.save(param);
   Future<MessageResponse> delete(int id) => _provider.delete(id);
 }

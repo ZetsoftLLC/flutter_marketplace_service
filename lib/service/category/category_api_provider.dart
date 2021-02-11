@@ -1,24 +1,26 @@
 library service;
+import 'dart:convert';
 
+import 'package:flutter_marketplace_service/const/const.dart';
+import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'package:flutter_marketplace_service/api.dart';
 import 'package:flutter_marketplace_service/config.dart';
 import 'package:flutter_marketplace_service/models/category_response.dart';
 
-class CategoryProvider {
-  Future<CategoryResponseModel> getAll() async {
-    final response = await Api.get("${Config.baseUrl}/categories");
 
-    if (response.isSuccess) {
-      try {
-        dynamic jsonRes = response.result;
-        return jsonRes.map<CategoryResponseModel>((m) {
-          return CategoryResponseModel.fromJson(m);
-        }).toList();
-      } catch (_) {
-        return null;
-      }
-    } else {
+class CategoryProvider {
+  Future<List<CategoryModel>> getAll() async {
+    http.Response response = await http
+        .get(Config.baseUrl+ '/categories')
+        .timeout(const Duration(seconds: 15));
+    if(response.statusCode == 200) {
+      CategoryResponseModel categoryResponseModel = allCategoryFromJson(
+          utf8.decode(response.bodyBytes));
+      ;
+      List<CategoryModel> data = categoryResponseModel.data;
+      return data;
+    }else{
       return null;
     }
   }

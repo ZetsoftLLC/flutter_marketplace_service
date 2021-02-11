@@ -5,21 +5,21 @@ import 'package:flutter_marketplace_service/api.dart';
 import 'package:flutter_marketplace_service/config.dart';
 import 'package:flutter_marketplace_service/models/message_response.dart';
 import 'package:flutter_marketplace_service/models/wishlist_request.dart';
+import 'package:http/http.dart' as http;
 
 class WishlistApiProvider {
-  Future<List<WishlistModel>> getList(int id) async {
-    final response = await Api.get("${Config.baseUrl}/wishlists/$id");
-
-    if (response.isSuccess) {
+  Future<List<String>> getList(int id) async {
+    // final response = await Api.get("${Config.baseUrl}/wishlists/$id");
+    http.Response response = await http.get(Config.baseUrl+ '/wishlists/$id')
+        .timeout(const Duration(seconds: 15));
+    if (response.statusCode == 200) {
       try {
-        dynamic jsonRes = response.result;
-        return jsonRes.map<WishlistModel>((m) {
-          return WishlistModel.fromJson(m);
-        }).toList();
-      } catch (_) {
+        WishlistModel wishlistModel = wishlistModelFromJson(response.body);
+        return wishlistModel.data;
+      }catch(_){
         return null;
       }
-    } else {
+     }else {
       return null;
     }
   }

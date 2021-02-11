@@ -1,35 +1,33 @@
+// To parse this JSON data, do
+//
+//     final wishlistModel = wishlistModelFromJson(jsonString);
+
 import 'dart:convert';
+
+WishlistModel wishlistModelFromJson(String str) => WishlistModel.fromJson(json.decode(str));
+
+String wishlistModelToJson(WishlistModel data) => json.encode(data.toJson());
 
 class WishlistModel {
   WishlistModel({
-    this.userId,
-    this.productId,
+    this.data,
+    this.success,
+    this.status,
   });
 
-  int userId;
-  int productId;
+  List<String> data;
+  bool success;
+  int status;
 
-  WishlistModel copyWith({
-    int userId,
-    int productId,
-  }) =>
-      WishlistModel(
-        userId: userId ?? this.userId,
-        productId: productId ?? this.productId,
-      );
+  factory WishlistModel.fromJson(Map<String, dynamic> json) => WishlistModel(
+    data: json["data"] == null ? null : List<String>.from(json["data"].map((x) => x)),
+    success: json["success"] == null ? null : json["success"],
+    status: json["status"] == null ? null : json["status"],
+  );
 
-  factory WishlistModel.fromJson(String str) =>
-      WishlistModel.fromMap(json.decode(str));
-
-  String toJson() => json.encode(toMap());
-
-  factory WishlistModel.fromMap(Map<String, dynamic> json) => WishlistModel(
-        userId: json["user_id"],
-        productId: json["product_id"],
-      );
-
-  Map<String, dynamic> toMap() => {
-        "user_id": userId,
-        "product_id": productId,
-      };
+  Map<String, dynamic> toJson() => {
+    "data": data == null ? null : List<dynamic>.from(data.map((x) => x)),
+    "success": success == null ? null : success,
+    "status": status == null ? null : status,
+  };
 }

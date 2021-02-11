@@ -1,11 +1,15 @@
 part of 'wishlist_cubit.dart';
 
 @immutable
-abstract class WishlistState {}
+abstract class WishlistState extends Equatable{
+
+  @override
+  List<Object> get props => [];
+}
 
 class WishlistInitial extends WishlistState {}
 
-class ProductLoadingState extends WishlistState {}
+class WishlistLoadingState extends WishlistState {}
 
 class WishlistLoadedState extends WishlistState {
   final List<WishlistModel> list;

@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter_marketplace_service/models/message_response.dart';
 import 'package:flutter_marketplace_service/models/wishlist_request.dart';
 import 'package:flutter_marketplace_service/service/wishlist/wishlist_repository.dart';
@@ -10,17 +11,17 @@ class WishlistCubit extends Cubit<WishlistState> {
   final WishlistRepository repository;
   WishlistCubit(this.repository) : super(WishlistInitial());
 
-  Future<void> getAll(int id) async {
-    try {
-      emit(WishlistInitial());
-
-      final List<WishlistModel> res = await repository.getList(id);
-
-      emit(WishlistLoadedState(list: res));
-    } catch (_) {
-      emit(WishlistErrorState());
-    }
-  }
+  // Future<void> getAll(int id) async {
+  //   try {
+  //     emit(WishlistInitial());
+  //
+  //     final List<String> res = await repository.getList(id);
+  //
+  //     emit(WishlistLoadedState(list: res));
+  //   } catch (_) {
+  //     emit(WishlistErrorState());
+  //   }
+  // }
 
   Future<void> save(WishlistModel param) async {
     try {
