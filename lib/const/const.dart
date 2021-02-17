@@ -1,3 +1,3 @@
-class StaticClass{
-  static int STATUS;
+class StaticClass {
+  static int status;
 }
