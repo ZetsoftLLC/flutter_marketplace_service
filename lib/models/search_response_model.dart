@@ -1,3 +1,7 @@
+// To parse this JSON data, do
+//
+//     final SearchResponseModel = SearchResponseModelFromMap(jsonString);
+
 import 'dart:convert';
 
 class SearchResponseModel {
@@ -10,13 +14,13 @@ class SearchResponseModel {
 
   final List<SearchedProduct> products;
   final List<dynamic> categories;
-  final List<dynamic> keywords;
+  final List<String> keywords;
   final List<dynamic> shops;
 
   SearchResponseModel copyWith({
     List<SearchedProduct> products,
     List<dynamic> categories,
-    List<dynamic> keywords,
+    List<String> keywords,
     List<dynamic> shops,
   }) =>
       SearchResponseModel(
@@ -36,7 +40,7 @@ class SearchResponseModel {
         products: List<SearchedProduct>.from(
             json["products"].map((x) => SearchedProduct.fromMap(x))),
         categories: List<dynamic>.from(json["categories"].map((x) => x)),
-        keywords: List<dynamic>.from(json["keywords"].map((x) => x)),
+        keywords: List<String>.from(json["keywords"].map((x) => x)),
         shops: List<dynamic>.from(json["shops"].map((x) => x)),
       );
 
@@ -99,6 +103,7 @@ class SearchedProduct {
     this.filePath,
     this.createdAt,
     this.updatedAt,
+    this.thumbnaileImage,
   });
 
   final int id;
@@ -112,9 +117,9 @@ class SearchedProduct {
   final String photos;
   final String thumbnailImg;
   final String videoProvider;
-  final String videoLink;
+  final dynamic videoLink;
   final String tags;
-  final dynamic description;
+  final String description;
   final int unitPrice;
   final int purchasePrice;
   final int variantProduct;
@@ -137,7 +142,7 @@ class SearchedProduct {
   final int shippingCost;
   final int numOfSale;
   final String metaTitle;
-  final dynamic metaDescription;
+  final String metaDescription;
   final dynamic metaImg;
   final dynamic pdf;
   final String slug;
@@ -150,6 +155,7 @@ class SearchedProduct {
   final dynamic filePath;
   final DateTime createdAt;
   final DateTime updatedAt;
+  final String thumbnaileImage;
 
   SearchedProduct copyWith({
     int id,
@@ -163,9 +169,9 @@ class SearchedProduct {
     String photos,
     String thumbnailImg,
     String videoProvider,
-    String videoLink,
+    dynamic videoLink,
     String tags,
-    dynamic description,
+    String description,
     int unitPrice,
     int purchasePrice,
     int variantProduct,
@@ -188,7 +194,7 @@ class SearchedProduct {
     int shippingCost,
     int numOfSale,
     String metaTitle,
-    dynamic metaDescription,
+    String metaDescription,
     dynamic metaImg,
     dynamic pdf,
     String slug,
@@ -201,6 +207,7 @@ class SearchedProduct {
     dynamic filePath,
     DateTime createdAt,
     DateTime updatedAt,
+    String thumbnaileImage,
   }) =>
       SearchedProduct(
         id: id ?? this.id,
@@ -252,9 +259,11 @@ class SearchedProduct {
         filePath: filePath ?? this.filePath,
         createdAt: createdAt ?? this.createdAt,
         updatedAt: updatedAt ?? this.updatedAt,
+        thumbnaileImage: thumbnaileImage ?? this.thumbnaileImage,
       );
 
-  // factory SearchedProduct.fromJson(String str) => SearchedProduct.fromMap(json.decode(str));
+  factory SearchedProduct.fromJson(String str) =>
+      SearchedProduct.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
@@ -271,7 +280,7 @@ class SearchedProduct {
         thumbnailImg:
             json["thumbnail_img"] == null ? null : json["thumbnail_img"],
         videoProvider: json["video_provider"],
-        videoLink: json["video_link"] == null ? null : json["video_link"],
+        videoLink: json["video_link"],
         tags: json["tags"],
         description: json["description"],
         unitPrice: json["unit_price"],
@@ -309,6 +318,7 @@ class SearchedProduct {
         filePath: json["file_path"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
+        thumbnaileImage: json["thumbnaile_image"],
       );
 
   Map<String, dynamic> toMap() => {
@@ -323,7 +333,7 @@ class SearchedProduct {
         "photos": photos == null ? null : photos,
         "thumbnail_img": thumbnailImg == null ? null : thumbnailImg,
         "video_provider": videoProvider,
-        "video_link": videoLink == null ? null : videoLink,
+        "video_link": videoLink,
         "tags": tags,
         "description": description,
         "unit_price": unitPrice,
@@ -361,5 +371,6 @@ class SearchedProduct {
         "file_path": filePath,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
+        "thumbnaile_image": thumbnaileImage,
       };
 }

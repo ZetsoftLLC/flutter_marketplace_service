@@ -57,6 +57,8 @@ class ProductModel {
     this.discountType,
     this.rating,
     this.sales,
+    this.variant,
+    this.variations,
     this.links,
   });
 
@@ -68,11 +70,13 @@ class ProductModel {
   final double baseDiscountedPrice;
   final int todaysDeal;
   final int featured;
-  final String unit;
-  final int discount;
+  final Unit unit;
+  final double discount;
   final DiscountType discountType;
   final int rating;
   final int sales;
+  final Varia variant;
+  final List<Varia> variations;
   final Links links;
 
   ProductModel copyWith({
@@ -84,11 +88,13 @@ class ProductModel {
     double baseDiscountedPrice,
     int todaysDeal,
     int featured,
-    String unit,
-    int discount,
+    Unit unit,
+    double discount,
     DiscountType discountType,
     int rating,
     int sales,
+    Varia variant,
+    List<Varia> variations,
     Links links,
   }) =>
       ProductModel(
@@ -105,6 +111,8 @@ class ProductModel {
         discountType: discountType ?? this.discountType,
         rating: rating ?? this.rating,
         sales: sales ?? this.sales,
+        variant: variant ?? this.variant,
+        variations: variations ?? this.variations,
         links: links ?? this.links,
       );
 
@@ -122,11 +130,14 @@ class ProductModel {
         baseDiscountedPrice: json["base_discounted_price"].toDouble(),
         todaysDeal: json["todays_deal"],
         featured: json["featured"],
-        unit: json["unit"],
-        discount: json["discount"],
+        unit: unitValues.map[json["unit"]],
+        discount: json["discount"].toDouble(),
         discountType: discountTypeValues.map[json["discount_type"]],
         rating: json["rating"],
         sales: json["sales"],
+        variant: Varia.fromMap(json["variant"]),
+        variations:
+            List<Varia>.from(json["variations"].map((x) => Varia.fromMap(x))),
         links: Links.fromMap(json["links"]),
       );
 
@@ -139,11 +150,13 @@ class ProductModel {
         "base_discounted_price": baseDiscountedPrice,
         "todays_deal": todaysDeal,
         "featured": featured,
-        "unit": unit,
+        "unit": unitValues.reverse[unit],
         "discount": discount,
         "discount_type": discountTypeValues.reverse[discountType],
         "rating": rating,
         "sales": sales,
+        "variant": variant.toMap(),
+        "variations": List<dynamic>.from(variations.map((x) => x.toMap())),
         "links": links.toMap(),
       };
 }
@@ -195,6 +208,79 @@ class Links {
         "reviews": reviews,
         "related": related,
         "top_from_seller": topFromSeller,
+      };
+}
+
+enum Unit { KG, UNIT_KG }
+
+final unitValues = EnumValues({"KG": Unit.KG, "Kg": Unit.UNIT_KG});
+
+class Varia {
+  Varia({
+    this.id,
+    this.productId,
+    this.variant,
+    this.sku,
+    this.price,
+    this.qty,
+    this.createdAt,
+    this.updatedAt,
+  });
+
+  final int id;
+  final int productId;
+  final String variant;
+  final String sku;
+  final int price;
+  final int qty;
+  final DateTime createdAt;
+  final DateTime updatedAt;
+
+  Varia copyWith({
+    int id,
+    int productId,
+    String variant,
+    String sku,
+    int price,
+    int qty,
+    DateTime createdAt,
+    DateTime updatedAt,
+  }) =>
+      Varia(
+        id: id ?? this.id,
+        productId: productId ?? this.productId,
+        variant: variant ?? this.variant,
+        sku: sku ?? this.sku,
+        price: price ?? this.price,
+        qty: qty ?? this.qty,
+        createdAt: createdAt ?? this.createdAt,
+        updatedAt: updatedAt ?? this.updatedAt,
+      );
+
+  factory Varia.fromJson(String str) => Varia.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory Varia.fromMap(Map<String, dynamic> json) => Varia(
+        id: json["id"],
+        productId: json["product_id"],
+        variant: json["variant"] == null ? null : json["variant"],
+        sku: json["sku"] == null ? null : json["sku"],
+        price: json["price"],
+        qty: json["qty"],
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
+      );
+
+  Map<String, dynamic> toMap() => {
+        "id": id,
+        "product_id": productId,
+        "variant": variant == null ? null : variant,
+        "sku": sku == null ? null : sku,
+        "price": price,
+        "qty": qty,
+        "created_at": createdAt.toIso8601String(),
+        "updated_at": updatedAt.toIso8601String(),
       };
 }
 
