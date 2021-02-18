@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 part 'businesssettings_state.dart';
 
 class BusinesssettingsCubit extends Cubit<BusinesssettingsState> {
-  final BusinessSettingsProvider repository;
+  final BusinessSettingsRepository repository;
   BusinesssettingsCubit(this.repository) : super(BusinesssettingsInitial());
 
   Future<void> getList() async {

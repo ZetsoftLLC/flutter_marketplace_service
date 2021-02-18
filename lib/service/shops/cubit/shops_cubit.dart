@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 part 'shops_state.dart';
 
 class ShopsCubit extends Cubit<ShopsState> {
-  final ShopsProvider repository;
+  final ShopsRepository repository;
   ShopsCubit(this.repository) : super(ShopsInitial());
 
   Future<void> fetchBanners() async {

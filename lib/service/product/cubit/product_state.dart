@@ -12,4 +12,10 @@ class ProductLoadedState extends ProductState {
   ProductLoadedState({@required this.list}) : assert(list != null);
 }
 
+class ProductDetailLoadedState extends ProductState {
+  final ProductDetailResponse response;
+  ProductDetailLoadedState({@required this.response})
+      : assert(response != null);
+}
+
 class ProductErrorState extends ProductState {}

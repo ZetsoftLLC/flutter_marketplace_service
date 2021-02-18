@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('business_settings get', () async {
-    var repo = BusinessSettingsProvider();
+    var repo = BusinessSettingsRepository();
     var res = await repo.getList();
     assert(res != null);
   });

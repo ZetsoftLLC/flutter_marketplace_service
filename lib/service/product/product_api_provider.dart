@@ -3,6 +3,7 @@ library service;
 import 'dart:async';
 import 'package:flutter_marketplace_service/api.dart';
 import 'package:flutter_marketplace_service/config.dart';
+import 'package:flutter_marketplace_service/models/product_detail_response.dart';
 import 'package:flutter_marketplace_service/models/products_response.dart';
 
 class ProductApiProvider {
@@ -152,12 +153,12 @@ class ProductApiProvider {
     }
   }
 
-  Future<ProductsResponseModel> getById(int id) async {
+  Future<ProductDetailResponse> getById(int id) async {
     final response = await Api.get("${Config.baseUrl}/products/$id");
 
     if (response.isSuccess) {
       try {
-        return ProductsResponseModel.fromJson(response.result);
+        return ProductDetailResponse.fromJson(response.result);
       } catch (_) {
         return null;
       }

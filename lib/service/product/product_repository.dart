@@ -1,3 +1,4 @@
+import 'package:flutter_marketplace_service/models/product_detail_response.dart';
 import 'package:flutter_marketplace_service/models/products_response.dart';
 import 'package:flutter_marketplace_service/service/product/product_api_provider.dart';
 
@@ -28,5 +29,5 @@ class ProductRepository {
 
   Future<ProductsResponseModel> getOfBestSeller() => _pro.getOfBestSeller();
 
-  Future<ProductsResponseModel> getById(int id) => _pro.getById(id);
+  Future<ProductDetailResponse> getById(int id) => _pro.getById(id);
 }

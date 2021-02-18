@@ -1,7 +1,7 @@
 import 'package:flutter_marketplace_service/models/category_response.dart';
 
-class CategoryProvider {
-  CategoryProvider ps = CategoryProvider();
+class CategoryRepository {
+  CategoryRepository ps = CategoryRepository();
 
   Future<CategoryResponseModel> getAll() => ps.getAll();
   Future<CategoryResponseModel> getTop() => ps.getTop();

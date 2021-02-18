@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   test('general_settings getlist', () async {
-    var repo = GeneralSettingsProvider();
+    var repo = GeneralSettingsRepository();
     var res = await repo.getList();
     assert(res != null);
   });

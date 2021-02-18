@@ -17,10 +17,14 @@ class CategoryResponseModel {
   bool success;
   int status;
 
-  factory CategoryResponseModel.fromJson(Map<String, dynamic> json) =>
+  factory CategoryResponseModel.fromJson(String str) =>
+      CategoryResponseModel.fromMap(json.decode(str));
+
+  factory CategoryResponseModel.fromMap(Map<String, dynamic> json) =>
       CategoryResponseModel(
         data: List<CategoryModel>.from(
-            json["data"].map((x) => CategoryModel.fromJson(x))),
+          json["data"].map((x) => CategoryModel.fromJson(x)),
+        ),
         success: json["success"],
         status: json["status"],
       );

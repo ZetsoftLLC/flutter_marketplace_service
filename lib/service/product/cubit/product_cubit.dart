@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter_marketplace_service/models/product_detail_response.dart';
 import 'package:flutter_marketplace_service/models/products_response.dart';
 import 'package:flutter_marketplace_service/service/product/product_repository.dart';
 import 'package:meta/meta.dart';
@@ -136,9 +137,9 @@ class ProductCubit extends Cubit<ProductState> {
     try {
       emit(ProductInitial());
 
-      final ProductsResponseModel res = await repository.getById(id);
+      final ProductDetailResponse res = await repository.getById(id);
 
-      emit(ProductLoadedState(list: res));
+      emit(ProductDetailLoadedState(response: res));
     } catch (_) {
       emit(ProductErrorState());
     }
