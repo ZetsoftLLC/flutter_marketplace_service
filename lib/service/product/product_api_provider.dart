@@ -52,8 +52,8 @@ class ProductApiProvider {
   }
 
   Future<ProductsResponseModel> getOfCategory(int categoryId, int page) async {
-    final response = await Api.get(
-        "${Config.baseUrl}/products/category$categoryId?page=$page");
+    final url = "${Config.baseUrl}/products/category/$categoryId?page=$page";
+    final response = await Api.get(url);
 
     if (response.isSuccess) {
       try {
